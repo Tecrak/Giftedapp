@@ -12,21 +12,19 @@
 * > ul {
     list-style: none;
 }
-body {
-    position: relative;
-    z-index: 99;
-    width: 320px;
-    height: 640px;
+body, html {
+    height: 100%;
+    margin: 0;
+    background: #00068C;
 }
-
 /* Phone model */
 .phoneContainer {
-    width: 320px;
-    height: 640px;
-    position: relative;
-    overflow: hidden;
-    user-select: none;  
+    width: 100%;
 } 
+.container .content {
+    flex-grow: 1;
+    /* Other styles for content */
+}
 .zoomedMap {
     position: absolute;
     left: 150px;
