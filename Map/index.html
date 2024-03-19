@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ab3a47a664.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" type="text/css">
-    <title>Start2</title>
+    <title>Home</title>
 </head>
 <body> 
-<!--     <div class="phoneContainer"> -->
+    <div class="phoneContainer">
+        <!-- <div class="phoneTopBlack"></div> -->
         <div class="phoneContent">
             <div class="navigationBlock" id="navigationBlock">
                 <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
@@ -68,7 +69,8 @@
                 </ul>
             </div>
         </div>
-<!--     </div> -->
+        <!-- <div class="phoneBottomBlack"></div> -->
+    </div>
     <script> //Navigation open functions
         const navigationMenu = document.getElementById("navigationMenu");    
         const chrestMenu = document.getElementById("chrestMenu");
@@ -170,50 +172,50 @@
             isDragging = false;
         }
 
-        // // Check if .map height is > 356 and not dragging, then set it to 506
-        // setInterval(() => {
-        //     const currentMapHeight = parseFloat(getComputedStyle(map).height);
-        //     if (!isDragging && currentMapHeight < 148) {
-        //         sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
-        //         map.style.height = 'calc(-40%)';
-        //         sculptureList.style.height = 'calc(570%)';
-        //         map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
-        //         sculptureList.style.background = "url(purpleBack.png) center center/cover";
-        //         navigationBlock.style.background = "#C800EF";
-        //     }
-        //     else {
-        //         sculptureList.style.background = "url(pinkBack.png) center center/cover";
-        //         navigationBlock.style.background = "#FF57B1";
-        //     }
-        // }, 10);
+        // Check if .map height is > 356 and not dragging, then set it to 506
+        setInterval(() => {
+            const currentMapHeight = parseFloat(getComputedStyle(sculptureList).height);
+            if (!isDragging && currentMapHeight > 486) {
+                sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
+                map.style.height = 'calc(-40%)';
+                sculptureList.style.height = 'calc(702%)';
+                map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
+                sculptureList.style.background = "url(purpleBack.png) center center/cover";
+                navigationBlock.style.background = "#C800EF";
+            }
+            else {
+                sculptureList.style.background = "url(pinkBack.png) center center/cover";
+                navigationBlock.style.background = "#FF57B1";
+            }
+        }, 10);
 
-        // setInterval(() => {
-        //     const currentMapHeight = parseFloat(getComputedStyle(map).height);
-        //     if (!isDragging && currentMapHeight < 319 && currentMapHeight > 147) {
-        //         map.style.height = 'calc(50%)';
-        //         sculptureList.style.height = 'calc(50%)';
-        //         map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
-        //         sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.1s ease';
-        //         iconsBlock.style.opacity = '1';
-        //         iconsBlock.style.pointerEvents = 'all';
-        //         mapIcon1.style.left = '106px';
-        //         mapIcon1.style.top = '27px';
-        //     }
-        // }, 10);
+        setInterval(() => {
+            const currentMapHeight = parseFloat(getComputedStyle(sculptureList).height);
+            if (!isDragging && currentMapHeight < 485 && currentMapHeight > 249) {
+                map.style.height = 'calc(50%)';
+                sculptureList.style.height = 'calc(50%)';
+                map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
+                sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.1s ease';
+                iconsBlock.style.opacity = '1';
+                iconsBlock.style.pointerEvents = 'all';
+                mapIcon1.style.left = '106px';
+                mapIcon1.style.top = '27px';
+            }
+        }, 10);
 
-        // setInterval(() => {
-        //     const currentMapHeight = parseFloat(getComputedStyle(map).height);
-        //     if (!isDragging && currentMapHeight > 320) {
-        //         map.style.height = 'calc(506%)';
-        //         sculptureList.style.height = 'calc(23%)';
-        //         map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
-        //         sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.1s ease';
-        //         iconsBlock.style.opacity = '1';
-        //         iconsBlock.style.pointerEvents = 'all';
-        //         mapIcon1.style.left = '104px';
-        //         mapIcon1.style.top = '144px';
-        //     }
-        // }, 10);
+        setInterval(() => {
+            const currentMapHeight = parseFloat(getComputedStyle(sculptureList).height);
+            if (!isDragging && currentMapHeight < 248) {
+                map.style.height = 'calc(506%)';
+                sculptureList.style.height = 'calc(54%)';
+                map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
+                sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.1s ease';
+                iconsBlock.style.opacity = '1';
+                iconsBlock.style.pointerEvents = 'all';
+                mapIcon1.style.left = '104px';
+                mapIcon1.style.top = '144px';
+            }
+        }, 10);
     </script>
     <script> //Open brief info
         function openTaras() {
