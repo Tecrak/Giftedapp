@@ -20,15 +20,17 @@
                 <div class="middleText">
                     <h1 class="GifWhite" id="colorChangeText">Gifted</h1>
                     <!-- <h1 class="GifBlack">Gifted</h1> -->
-                    <p>Sculpture Trail</p>
+                    <p id="oo">Sculpture Trail</p>
                 </div>
             </div>
         </div>
     </div>
     <script>
+        const oo = document.getElementById("oo");
         setTimeout(() => {
             window.location.href = 'https://tecrak.github.io/Giftedapp/Map/index.html';
-        }, 5500);
+            oo.style.color="red";
+        }, 1500);
     </script>
 </body>
 </html>
