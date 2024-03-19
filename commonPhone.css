@@ -29,20 +29,6 @@ body, html {
     position: absolute;
     left: 150px;
 }
-.phoneTopBlack {
-    width: 320px;
-    height: 20px;
-    background: url(phoneTop.png)center center/cover;
-    border-radius: 5px 5px 0px 0px;
-}
-.phoneBottomBlack {
-    height: 48px;
-    width: 320px;
-    position: absolute;
-    bottom: 0;
-    background: url(phoneBottom.png)center center/cover;
-    border-radius: 0px 0px 5px 5px;
-}
 .phoneContent {
     background: #00068C;
     height: 89.4%;
