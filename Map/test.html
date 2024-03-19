@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Map Animation</title>
+<style>
+    .map_container {
+        overflow: hidden;
+        height: 300px;
+        width: 300px;
+        border: 1px solid #ccc;
+    }
+
+    .map {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: url(map.jpg);
+        transform-origin: center center;
+        transition: transform 0.01s ease;
+    }
+
+    .maps_dots {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+    }
+
+    .dot1 {
+        top: 20px;
+        left: 20px;
+    }
+
+    .dot2 {
+        top: 100px;
+        left: 150px;
+    }
+
+    .dot3 {
+        top: 200px;
+        left: 50px;
+    }
+
+    .dot4 {
+        top: 250px;
+        left: 250px;
+    }
+</style>
+</head>
+<body>
+    <div class="map_container">
+        <div class="map">
+            <div class="maps_dots">
+                <div class="dot dot1"></div>
+                <div class="dot dot2"></div>
+                <div class="dot dot3"></div>
+                <div class="dot dot4"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const map = document.querySelector('.map');
+    
+        map.addEventListener('mouseenter', function() {
+            this.addEventListener('wheel', scaleMap);
+        });
+    
+        map.addEventListener('mouseleave', function() {
+            this.removeEventListener('wheel', scaleMap);
+        });
+    
+        function scaleMap(event) {
+            event.preventDefault();
+            const delta = event.deltaY || event.detail || event.wheelDelta;
+            const scaleChange = delta > 0 ? -0.1 : 0.1; // Adjust scaling speed
+    
+            let currentScale = getComputedStyle(this).transform.match(/-?[\d\.]+/g);
+            currentScale = currentScale ? parseFloat(currentScale[0]) : 1;
+    
+            const newScale = Math.max(1, Math.min(currentScale + scaleChange, 3)); // Ensure scale stays within limits
+    
+            this.style.transform = `scale(${newScale})`;
+    
+            // Adjust the transform origin based on the mouse position
+            const rect = this.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+    
+            const percentX = mouseX / rect.width;
+            const percentY = mouseY / rect.height;
+    
+            const newX = percentX * 100;
+            const newY = percentY * 100;
+    
+            this.style.transformOrigin = `${newX}% ${newY}%`;
+        }
+    </script>
+</body>
+</html>

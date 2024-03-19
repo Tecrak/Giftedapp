@@ -1,0 +1,261 @@
+@import url('https://fonts.cdnfonts.com/css/chalkduster');
+@font-face {
+    font-family: 'Brushberry Script';
+    src: url('font/Brushberry Script.otf') format('opentype');
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Chalkduster', sans-serif;
+    font-size: 15px;
+}
+* > ul {
+    list-style: none;
+}
+body {
+    background: url(background.jpeg) center center/cover;
+    position: relative;
+    z-index: 99;
+}
+
+/* Phone model */
+.phoneContainer {
+    width: 320px;
+    height: 640px;
+    position: relative;
+    overflow: hidden;
+    top:50px;
+    margin: 0 auto;
+    user-select: none;  
+} 
+.zoomedMap {
+    position: absolute;
+    left: 150px;
+}
+.phoneTopBlack {
+    width: 320px;
+    height: 20px;
+    background: url(phoneTop.png)center center/cover;
+    border-radius: 5px 5px 0px 0px;
+}
+.phoneBottomBlack {
+    height: 48px;
+    width: 320px;
+    position: absolute;
+    bottom: 0;
+    background: url(phoneBottom.png)center center/cover;
+    border-radius: 0px 0px 5px 5px;
+}
+.phoneContent {
+    background: #00068C;
+    height: 89.4%;
+    top:0px;
+    width: 100%;
+    position: relative;
+}
+/*--------------------------  */
+/* Top navigation styles */
+.navigationBlock {
+    display: flex;
+}
+.navigationMenu {
+    position: absolute;
+    z-index: 3;
+    background: rgb(53, 53, 53);
+    box-shadow: 1px 0px 2px 0px black;
+    opacity: 0;
+    pointer-events: none;
+    /* padding-right: 1px; */
+    top: 0px;
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden; /* Add this line to hide content when width is 0 */
+}
+.closeMenu {
+    color:#00068C;
+    right: 4px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 3;
+}
+.navigationIcon {
+    /* position: absolute; */
+}
+.navigationMenu > li {
+    position: relative;
+    border-bottom:1.5px rgba(128, 128, 128, 0.495) solid;
+    top:44px;
+    /* margin-top: 10px; */
+    background: rgba(232, 232, 232, 0.929);
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding-left: 15px;
+}
+.navigationIcon > li {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    top:100px;
+}
+.navigationIcon > i {
+    position: relative;
+    z-index: 4;
+    font-size: 38px;
+    /* background: red; */
+    transition: color 0.7s ease;
+    padding:3px 5px;
+    cursor: pointer;
+}
+.navigationLogo {
+    /* background: green; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+/* --------------------------- */
+/* MiDDlle elements */
+.middleElemets {
+    /* background: red; */
+    height: 100%;
+}
+.shapes {
+    /* background: red; */
+    display: flex;
+    width: 165px;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 0 auto;
+    top:120px;
+}
+.shapes > img {
+    width: 75px;
+    padding: 3px;
+    background: #00068C;
+}
+.shapes > img:nth-child(1) {
+    animation: yellowRotate 3s infinite steps(180);
+}
+@keyframes yellowRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.shapes > img:nth-child(2) {
+    animation: skewing 2s alternate-reverse infinite steps(180);
+}
+@keyframes skewing {
+    0% {
+        transform: skewY(-20deg);
+        transform: skewX(15deg);
+    }
+    50% {
+        transform: skewY(20deg);
+        transform: skewX(-15deg);
+    }
+    75% {
+        transform: skewY(-20deg);
+        transform: skewX(15deg);
+    }
+    100% {
+        transform: skewY(20deg);
+        transform: skewX(-15deg);
+    }
+}
+.shapes > img:nth-child(3) {
+    animation: yellowRotate 1.5s infinite steps(180);
+    border-radius: 100%;
+}
+@keyframes fastRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.shapes > img:nth-child(4) {
+    animation: explose 0.7s infinite alternate steps(180);
+}
+@keyframes explose {
+    from {
+        transform: scale(90%);
+    }
+    tp {
+        transform: scale(100%);
+    }
+}
+.middleText {
+    /* background: red; */
+    text-align: center;
+    position: relative;
+    top:160px;
+    color: white;
+    position: relative;
+    animation: colorChangeAnimation 1.5s ease-in-out forwards;
+}
+.GifWhite {
+    font-size: 40px;
+    font-family: 'Brushberry Script', cursive;
+    position: relative;
+    font-style: normal;
+    margin: 0 auto;
+    font-weight: 400;
+  }
+
+  @keyframes colorChangeAnimation {
+    from {
+      color: black;
+      clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
+      transform: scale(0.85);
+    }
+    to {
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 150%, 0 150%);
+      transform: scale(1);
+    }
+  }
+.GifBlack {
+    position: absolute;
+    font-size: 40px;
+    color: black;
+    font-family: 'Brushberry Script', cursive;
+    font-style: normal;
+    font-weight: 400;
+    top:0px;
+    left: 99.58px;
+    overflow: hidden;
+    background: red;
+    animation: gif 2s steps(180) alternate;
+    width: 120px;
+}
+@keyframes gif {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 120px;
+    }
+}
+@keyframes gif2 {
+    from {
+        width: 120px;
+    }
+    to {
+        width: 0px;
+    }
+}
+.middleText > p {
+    font-size: 20px;
+    font-weight:lighter;
+}
+/* -------------------------- */

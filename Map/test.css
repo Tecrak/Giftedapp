@@ -1,0 +1,25 @@
+.map-container {
+    width: 500px; /* Set the width of your map container */
+    height: 300px; /* Set the height of your map container */
+    background: url(map.jpg) center center/cover;
+    overflow: hidden; /* Hide overflow to enable zooming */
+    position: relative; /* Position the dotOnMap relative to this container */
+  }
+  
+  .map {
+    width: 100%; /* Fill the map container */
+    height: 100%; /* Fill the map container */
+    background-size: cover; /* Cover the entire container */
+    position: relative; /* Position the dotOnMap relative to this container */
+  }
+  
+  .dotOnMap {
+    width: 10px; /* Set the width of your marker */
+    height: 10px; /* Set the height of your marker */
+    background-color: red; /* Set the color of your marker */
+    border-radius: 50%; /* Make it a circle */
+    position: absolute; /* Position it absolutely within the map container */
+    left: 50%; /* Set initial position (adjust as needed) */
+    top: 50%; /* Set initial position (adjust as needed) */
+    transform: translate(-50%, -50%); /* Center the marker */
+  }
