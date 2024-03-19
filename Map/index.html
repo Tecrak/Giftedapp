@@ -99,55 +99,79 @@
             }, 1); 
         }
     </script>
-    <script> // Dragging menu
-    const sculptureList = document.getElementById('sculptureList');
-    const map = document.getElementById('map');
-    const iconsBlock= document.getElementById('iconsBlock');
-    const mapIcon1 =document.getElementById('mapIcon1');
-    const expandButton = document.getElementById('gripper');
-    const navigationBlock = document.getElementById('navigationBlock');
-    let startY;
-    let initialMapHeight;
-    let initialSculptureListHeight;
-    let isDragging = false;
+    <script> // Drag menu
+        const sculptureList = document.getElementById('sculptureList');
+        const map = document.getElementById('map');
+        const iconsBlock= document.getElementById('iconsBlock');
+        const mapIcon1 =document.getElementById('mapIcon1');
+        const expandButton = document.getElementById('gripper');
+        const navigationBlock = document.getElementById('navigationBlock');
+        let startY;
+        let initialMapHeight;
+        let initialSculptureListHeight;
+        let isDragging = false;
 
-    expandButton.addEventListener('mousedown', function (e) {
-        e.preventDefault();
-        startY = e.clientY;
-        initialMapHeight = parseFloat(getComputedStyle(map).height);
-        initialSculptureListHeight = parseFloat(getComputedStyle(sculptureList).height);
-        isDragging = true;
-        document.addEventListener('mousemove', handleDrag);
-        document.addEventListener('mouseup', stopDrag);
-    });
-
-    function handleDrag(e) {
-        const deltaY = e.clientY - startY;
-        const percentageChange = deltaY + 12;
-        let newMapHeight = initialMapHeight + percentageChange;
-        // Limit the maximum height for .map to calc(506%)
-        if (newMapHeight > 506) {
-            newMapHeight = 506;
+        function startDrag(e) {
+            e.preventDefault();
+            if (e.type === 'mousedown') {
+                startY = e.clientY;
+            } else if (e.type === 'touchstart') {
+                startY = e.touches[0].clientY;
+            }
+            initialMapHeight = parseFloat(getComputedStyle(map).height);
+            initialSculptureListHeight = parseFloat(getComputedStyle(sculptureList).height);
+            isDragging = true;
+            if (e.type === 'mousedown') {
+                document.addEventListener('mousemove', handleDrag);
+                document.addEventListener('mouseup', stopDrag);
+            } else if (e.type === 'touchstart') {
+                document.addEventListener('touchmove', handleDrag);
+                document.addEventListener('touchend', stopDrag);
+            }
         }
-        let newSculptureListHeight = initialSculptureListHeight - percentageChange;
-        // Set the minimum height for .sculptureList to 23
-        if (newSculptureListHeight < 23) {
-            newSculptureListHeight = 23;
+
+        expandButton.addEventListener('mousedown', startDrag);
+        expandButton.addEventListener('touchstart', startDrag);
+
+        function handleDrag(e) {
+            let clientY;
+            if (e.type === 'mousemove') {
+                clientY = e.clientY;
+            } else if (e.type === 'touchmove') {
+                clientY = e.touches[0].clientY;
+            }
+            const deltaY = clientY - startY;
+            const percentageChange = deltaY + 12;
+            let newMapHeight = initialMapHeight + percentageChange;
+            // Limit the maximum height for .map to calc(506%)
+            if (newMapHeight > 506) {
+                newMapHeight = 506;
+            }
+            let newSculptureListHeight = initialSculptureListHeight - percentageChange;
+            // Set the minimum height for .sculptureList to 23
+            if (newSculptureListHeight < 23) {
+                newSculptureListHeight = 23;
+            }
+            map.style.height = `calc(${newMapHeight}%)`;
+            sculptureList.style.height = `calc(${newSculptureListHeight}%)`;
+            map.style.transition = 'height 0.01s ease-in-out, background 0.5s ease';
+            sculptureList.style.transition = 'height 0.01s ease-in-out, background 0.1s ease';
+
+            iconsBlock.style.opacity = '0';
+            iconsBlock.style.pointerEvents = 'none';
         }
-        map.style.height = `calc(${newMapHeight}%)`;
-        sculptureList.style.height = `calc(${newSculptureListHeight}%)`;
-        map.style.transition = 'height 0.01s ease-in-out, background 0.5s ease';
-        sculptureList.style.transition = 'height 0.01s ease-in-out, background 0.1s ease';
 
-        iconsBlock.style.opacity = '0';
-        iconsBlock.style.pointerEvents = 'none';
-    }
+        function stopDrag(e) {
+            if (e.type === 'mouseup') {
+                document.removeEventListener('mousemove', handleDrag);
+                document.removeEventListener('mouseup', stopDrag);
+            } else if (e.type === 'touchend') {
+                document.removeEventListener('touchmove', handleDrag);
+                document.removeEventListener('touchend', stopDrag);
+            }
+            isDragging = false;
+        }
 
-    function stopDrag() {
-        document.removeEventListener('mousemove', handleDrag);
-        document.removeEventListener('mouseup', stopDrag);
-        isDragging = false;
-    }
         // Check if .map height is > 356 and not dragging, then set it to 506
         setInterval(() => {
             const currentMapHeight = parseFloat(getComputedStyle(map).height);
@@ -164,6 +188,7 @@
                 navigationBlock.style.background = "#FF57B1";
             }
         }, 10);
+
         setInterval(() => {
             const currentMapHeight = parseFloat(getComputedStyle(map).height);
             if (!isDragging && currentMapHeight < 319 && currentMapHeight > 147) {
@@ -177,6 +202,7 @@
                 mapIcon1.style.top = '27px';
             }
         }, 10);
+
         setInterval(() => {
             const currentMapHeight = parseFloat(getComputedStyle(map).height);
             if (!isDragging && currentMapHeight > 320) {
@@ -262,42 +288,92 @@
             });
         });
     </script>
-    <script> // Map zooming
+    <script> // Zooming
         const realmap = document.querySelector('.map');
-    
+
         map.addEventListener('mouseenter', function() {
             this.addEventListener('wheel', scaleMap);
+            this.addEventListener('touchstart', handleTouchStart);
+            this.addEventListener('touchmove', handleTouchMove);
+            this.addEventListener('touchend', handleTouchEnd);
         });
-    
+
         map.addEventListener('mouseleave', function() {
             this.removeEventListener('wheel', scaleMap);
+            this.removeEventListener('touchstart', handleTouchStart);
+            this.removeEventListener('touchmove', handleTouchMove);
+            this.removeEventListener('touchend', handleTouchEnd);
         });
-    
+
+        let initialTouchX = 0;
+        let initialTouchY = 0;
+        let scaleThreshold = 50;
+
+        function handleTouchStart(event) {
+            const touch = event.touches[0];
+            initialTouchX = touch.clientX;
+            initialTouchY = touch.clientY;
+        }
+
+        function handleTouchMove(event) {
+            event.preventDefault();
+            const touch = event.touches[0];
+            const deltaX = touch.clientX - initialTouchX;
+            const deltaY = touch.clientY - initialTouchY;
+            const delta = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
+            const scaleChange = delta > 0 ? -0.1 : 0.1; // Adjust scaling speed
+
+            let currentScale = getComputedStyle(this).transform.match(/-?[\d\.]+/g);
+            currentScale = currentScale ? parseFloat(currentScale[0]) : 1;
+
+            const newScale = Math.max(1, Math.min(currentScale + scaleChange, 8)); // Ensure scale stays within limits
+
+            this.style.transform = `scale(${newScale})`;
+
+            // Adjust the transform origin based on the touch position
+            const rect = this.getBoundingClientRect();
+            const touchX = touch.clientX - rect.left;
+            const touchY = touch.clientY - rect.top;
+
+            const percentX = touchX / rect.width;
+            const percentY = touchY / rect.height;
+
+            const newX = percentX * 100;
+            const newY = percentY * 100;
+
+            this.style.transformOrigin = `${newX}% ${newY}%`;
+        }
+
+        function handleTouchEnd(event) {
+            initialTouchX = 0;
+            initialTouchY = 0;
+        }
+
         function scaleMap(event) {
             event.preventDefault();
             const delta = event.deltaY || event.detail || event.wheelDelta;
             const scaleChange = delta > 0 ? -0.1 : 0.1; // Adjust scaling speed
-    
+
             let currentScale = getComputedStyle(this).transform.match(/-?[\d\.]+/g);
             currentScale = currentScale ? parseFloat(currentScale[0]) : 1;
-    
+
             const newScale = Math.max(1, Math.min(currentScale + scaleChange, 8)); // Ensure scale stays within limits
 
             this.style.transform = `scale(${newScale})`;
-    
+
             // Adjust the transform origin based on the mouse position
             const rect = this.getBoundingClientRect();
             const mouseX = event.clientX - rect.left;
             const mouseY = event.clientY - rect.top;
-    
+
             const percentX = mouseX / rect.width;
             const percentY = mouseY / rect.height;
-    
+
             const newX = percentX * 100;
             const newY = percentY * 100;
-    
+
             this.style.transformOrigin = `${newX}% ${newY}%`;
         }
-    </script>
+</script>
 </body>
 </html>
