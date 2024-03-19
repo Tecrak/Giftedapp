@@ -13,7 +13,6 @@
     list-style: none;
 }
 body {
-    background: url(background.jpeg) center center/cover;
     position: relative;
     z-index: 99;
 }
@@ -24,8 +23,6 @@ body {
     height: 640px;
     position: relative;
     overflow: hidden;
-    top:50px;
-    margin: 0 auto;
     user-select: none;  
 } 
 .zoomedMap {
