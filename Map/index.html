@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ab3a47a664.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" type="text/css">
-    <title>START</title>
+    <title>HOME</title>
 </head>
 <body> 
     <div class="phoneContainer">
@@ -289,64 +289,41 @@
         });
     </script>
     <script> // Zooming
-        const realmap = document.querySelector('.map');
+        const realMap = document.querySelector('.map');
 
-        map.addEventListener('mouseenter', function() {
+        // Map zooming for mouse
+        realMap.addEventListener('mouseenter', function() {
             this.addEventListener('wheel', scaleMap);
-            this.addEventListener('touchstart', handleTouchStart);
-            this.addEventListener('touchmove', handleTouchMove);
-            this.addEventListener('touchend', handleTouchEnd);
         });
 
-        map.addEventListener('mouseleave', function() {
+        realMap.addEventListener('mouseleave', function() {
             this.removeEventListener('wheel', scaleMap);
-            this.removeEventListener('touchstart', handleTouchStart);
-            this.removeEventListener('touchmove', handleTouchMove);
-            this.removeEventListener('touchend', handleTouchEnd);
         });
 
-        let initialTouchX = 0;
-        let initialTouchY = 0;
-        let scaleThreshold = 50;
+        // Map zooming for touch
+        realMap.addEventListener('touchstart', function(event) {
+            if (event.touches.length === 2) {
+                const currentScale = getCurrentScale(this);
+                this.initialScale = currentScale;
+                this.initialTouches = event.touches;
+                this.addEventListener('touchmove', scaleMapTouch);
+            }
+        });
 
-        function handleTouchStart(event) {
-            const touch = event.touches[0];
-            initialTouchX = touch.clientX;
-            initialTouchY = touch.clientY;
-        }
+        realMap.addEventListener('touchend', function() {
+            this.removeEventListener('touchmove', scaleMapTouch);
+            this.initialScale = null; // Reset initial scale after touch ends
+            this.initialTouches = null; // Reset initial touch positions after touch ends
+        });
 
-        function handleTouchMove(event) {
-            event.preventDefault();
-            const touch = event.touches[0];
-            const deltaX = touch.clientX - initialTouchX;
-            const deltaY = touch.clientY - initialTouchY;
-            const delta = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
-            const scaleChange = delta > 0 ? -0.1 : 0.1; // Adjust scaling speed
-
-            let currentScale = getComputedStyle(this).transform.match(/-?[\d\.]+/g);
-            currentScale = currentScale ? parseFloat(currentScale[0]) : 1;
-
-            const newScale = Math.max(1, Math.min(currentScale + scaleChange, 8)); // Ensure scale stays within limits
-
-            this.style.transform = `scale(${newScale})`;
-
-            // Adjust the transform origin based on the touch position
-            const rect = this.getBoundingClientRect();
-            const touchX = touch.clientX - rect.left;
-            const touchY = touch.clientY - rect.top;
-
-            const percentX = touchX / rect.width;
-            const percentY = touchY / rect.height;
-
-            const newX = percentX * 100;
-            const newY = percentY * 100;
-
-            this.style.transformOrigin = `${newX}% ${newY}%`;
-        }
-
-        function handleTouchEnd(event) {
-            initialTouchX = 0;
-            initialTouchY = 0;
+        function getCurrentScale(element) {
+            const transform = window.getComputedStyle(element).transform;
+            const match = transform.match(/matrix\(([^\)]+)\)/);
+            if (match) {
+                const matrix = match[1].split(', ');
+                return parseFloat(matrix[0]);
+            }
+            return 1;
         }
 
         function scaleMap(event) {
@@ -354,9 +331,7 @@
             const delta = event.deltaY || event.detail || event.wheelDelta;
             const scaleChange = delta > 0 ? -0.1 : 0.1; // Adjust scaling speed
 
-            let currentScale = getComputedStyle(this).transform.match(/-?[\d\.]+/g);
-            currentScale = currentScale ? parseFloat(currentScale[0]) : 1;
-
+            let currentScale = getCurrentScale(this);
             const newScale = Math.max(1, Math.min(currentScale + scaleChange, 8)); // Ensure scale stays within limits
 
             this.style.transform = `scale(${newScale})`;
@@ -374,6 +349,46 @@
 
             this.style.transformOrigin = `${newX}% ${newY}%`;
         }
-</script>
+
+        function scaleMapTouch(event) {
+            event.preventDefault();
+
+            const touch1 = event.touches[0];
+            const touch2 = event.touches[1];
+
+            const currentDistance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
+            const initialDistance = Math.hypot(this.initialTouches[1].clientX - this.initialTouches[0].clientX, this.initialTouches[1].clientY - this.initialTouches[0].clientY);
+
+            if (!this.initialScale) {
+                this.initialScale = getCurrentScale(this);
+                return;
+            }
+
+            const scaleChange = (currentDistance - initialDistance) / 100;
+
+            let currentScale = this.initialScale || 1;
+            const newScale = Math.max(1, Math.min(currentScale + scaleChange, 8)); // Ensure scale stays within limits
+
+            this.style.transform = `scale(${newScale})`;
+
+            // Adjust the transform origin based on the touch positions
+            const rect = this.getBoundingClientRect();
+            const touch1X = this.initialTouches[0].clientX - rect.left;
+            const touch1Y = this.initialTouches[0].clientY - rect.top;
+            const touch2X = this.initialTouches[1].clientX - rect.left;
+            const touch2Y = this.initialTouches[1].clientY - rect.top;
+
+            const centerX = (touch1X + touch2X) / 2;
+            const centerY = (touch1Y + touch2Y) / 2;
+
+            const percentX = centerX / rect.width;
+            const percentY = centerY / rect.height;
+
+            const newX = percentX * 100;
+            const newY = percentY * 100;
+
+            this.style.transformOrigin = `${newX}% ${newY}%`;
+        }
+    </script>
 </body>
 </html>
