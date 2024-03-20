@@ -210,10 +210,14 @@ body, html {
 .sculptImg {
     position: relative;
     right: 20px;
-    border: 1px grey solid;
     margin-left: auto;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
+}
+.sculptImg > img {
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
 }
 .sculptureList > p {
     text-align: center;
