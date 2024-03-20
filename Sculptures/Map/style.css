@@ -1,0 +1,465 @@
+@font-face {
+    font-family: 'Brushberry Script';
+    src: url('../font/Brushberry Script.otf') format('opentype');
+}
+@font-face {
+    font-family: "ApfelGrotezk";
+    src: url("../font/ApfelGrotezk-Regular.woff2") format("woff2");
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "ApfelGrotezk";
+    font-size: 15px;
+}
+* > ul {
+    list-style: none;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    display: flex;
+}
+
+/* Phone model */
+.phoneContainer {
+    width: 100%;
+    
+
+} 
+.zoomedMap {
+    position: absolute;
+    left: 150px;
+}
+.phoneContent {
+    z-index: 999999;
+    height: 100%;
+    top:0px;
+    overflow: scroll;
+    width: 100%;
+    position: relative;
+}
+/*--------------------------  */
+/* Top navigation styles */
+.navigationBlock {
+    display: flex;
+    transition: background 0.4s ease;
+    background: #B800DB;
+}
+.navigationMenu {
+    position: absolute;
+    z-index: 3;
+    background: url(../img/navigateBack.png);
+    color: #00068C;
+    box-shadow: 1px 0px 2px 0px black;
+    opacity: 0;
+    pointer-events: none;
+    /* padding-right: 1px; */
+    top: 0px;
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden; /* Add this line to hide content when width is 0 */
+}
+.navigationMenu::before {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.54);
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.closeMenu {
+    color:#00068C;
+    right: 4px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 3;
+}
+.navigationIcon {
+    color: white;
+    text-shadow: 0px 1px 0px black;
+}
+.navigationMenu > li {
+    position: relative;
+    border-bottom:1.5px rgb(216, 216, 216) solid;
+    top:48px;
+    /* margin-top: 10px; */
+    /* background: rgba(232, 232, 232, 0.929); */
+    font-weight: bold;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding-left: 12px;
+}
+.navigationMenu > li:nth-child(2) {
+    background: linear-gradient(45deg,#FFC3E3 80%, #ff0088a8 20%);
+}
+.navigationMenu > li:nth-child(3) {
+    background: linear-gradient(135deg, #EDAEFA  80%,#c700ef9f 20%);
+}
+.navigationMenu > li:nth-child(4) {
+    background: linear-gradient(45deg,#FFF7B9 80%, #ffe100bd 20%);
+}
+.navigationMenu > li:nth-child(5) {
+    background: linear-gradient(135deg,#BBFDEF 80%, #00F6BF 20%);
+}
+.navigationIcon > li {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    top:100px;
+}
+.navigationIcon > i {
+    position: relative;
+    z-index: 4;
+    font-size: 38px;
+    /* background: red; */
+    transition: color 0.7s ease;
+    padding:3px 5px;
+    cursor: pointer;
+}
+.navigationLogo {
+    /* background: green; */
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    padding-top: 10px;
+    color:white;
+    text-shadow: 1px 1px 3px black;
+    font-weight: bold;
+    font-family: 'Brushberry Script', cursive;
+    position: relative;
+    font-style: normal;
+}
+/* --------------------------- */
+
+/* Center Part styles */
+.contentBlock{
+    /* background: blue; */
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* top:5px; */
+}
+.map {
+    overflow: hidden;
+    width: 100%;
+    height: 50%;
+    background: url(../img/map.jpg) center center;
+    background-size:500px;
+    transform: scale(1);
+    z-index: 0;
+}
+.realMap {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    position: relative;
+    transform-origin: center center;
+    transition: transform 0.01s ease; /* Smooth animation */
+}
+.iconsBlock {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+    top: 0;
+    left: 0;
+}
+.mapIcon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    animation: fancy 6s  steps(180) infinite;
+    transition: transform 0.4s ease, background 0.01s;
+}
+.mapIcon1 {
+    left:106px;
+    top:27px;
+}
+.mapIconN {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 100%;
+}
+.mapIconN > div {
+    border: 0.5px rgb(0, 247, 255) solid;
+    position: absolute;
+    border-radius: 100%;
+    top:0px;
+    left:0px;
+    width: 15px;
+    transition: top 1s ease, left 1s ease;
+    height: 15px;
+}
+@keyframes fancy {
+    0% {
+        transform: scale(1);
+        background: url(../img/TarasIcon.jpg) center center/cover;
+    }
+    16.66666667% {
+        transform: scale(2.0);
+        background: url(../img/TarasIcon.jpg) center center/cover;
+    }
+    33.33333334% {
+        transform: scale(1);
+        background: url(../img/2.jpg) center center/cover;
+    }
+    50.00000001% {
+        transform: scale(2);
+        background: url(../img/2.jpg) center center/cover;
+    }
+    66.66666668% {
+        transform: scale(1);
+        background: url(../img/IvanFranko.jpg) center center/cover;
+    }
+    83.33333335% {
+        transform: scale(2);
+        background: url(../img/IvanFranko.jpg) center center/cover;
+    }
+    100% {
+        transform: scale(1);
+        background: url(../img/TarasIcon.jpg) center center/cover;
+    }
+    
+}
+@keyframes mapZoom {
+    from {
+        background-size: 500px;
+    }
+    to {
+        background-size: 1000px;
+    }
+}
+.expandList {
+    height: 17px;
+    border-top: grey 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#gripIcon {
+    font-size: 19px;
+    transition: transform 0.3s ease-in-out;
+    cursor: grab;
+}
+.sculptureList {
+    position: relative;
+    background: url(../img/pinkBack.png) center center/cover;
+    color: #00068C;
+    width: 100%;
+    z-index: 1;
+    height: 50%; 
+    /* transition: height 0.01s ease-in-out, top 0.01s ease-in-out, background 0.5s ease; */
+    overflow: scroll    ;
+}
+.sculptureList::before{
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.319);
+}
+.sculptureList > * {
+    position: relative;
+    z-index: 1;
+}
+.sculptureList.open {
+    height: 900px; 
+    background: red;
+    background-color: white;
+    top:-267px;
+}
+.sculptImg {
+    position: relative;
+    right: 20px;
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+}
+.sculptImg > img {
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+}
+.sculptureList > p {
+    text-align: center;
+    font-size: 29px;
+    font-weight: bold;
+}
+.sculptureList > li {
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+    padding-left:10px ;
+    height: 39px;
+    transition: background 0.15s ease;
+}
+.sculptureList > li:hover {
+    background: rgb(193, 192, 192);
+    cursor: pointer;
+}
+/* -------------------- */
+/* --------Sculture reaction chat */
+.pointChat {
+    overflow: hidden;
+    /* background: rgb(58, 58, 58); */
+    box-shadow: 0px 0px 60px 30px black;
+    width: 97%;
+    display: flex;
+    position: absolute;
+    background: white;
+    z-index: 1000;
+    height: 0;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, height 1.0s ease;
+}
+.closeChat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 30px;
+    position: absolute;
+    right: 0px;
+}
+.aboutSculpt {
+    background: white;
+    height: 300px;
+    display: flex;
+    padding: 3px;
+    align-items: center;
+}
+.aboutImg {
+    width: 120px;
+    border-radius:100% ;
+    margin-right: 5px;
+    float: left;
+}
+.aboutText > h3 {
+    font-size: 20px;
+    text-align: center;
+}
+.aboutText > p {
+    /* background: blue; */
+    font-size: 14px;
+    margin: 2px;
+}
+.chatSculpt {
+    /* background: red; */
+    padding: 3px;
+}
+.topChatElement {
+    /* background: blue; */
+    border-radius: 5px;
+    box-shadow: 0px -1px 0.5px 0px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.myProfile {
+    display: flex;
+    /* background: yellow; */
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+}
+.myProfileImg {
+    width: 36px;
+    height: 36px;
+    background: url(../img/myProfile.jpg) center center/cover;
+    border-radius: 100%;
+}
+.myProfile > p {
+    font-size: 16px;
+    margin-left: 4px;
+}
+.commentsValue {
+    /* background: red; */
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+.bottomChatElement {
+    position: relative;
+    top:20px;
+    /* background: red; */
+}
+.leaveComm {
+    position: relative;
+    top:-18px;
+}
+.leaveComm > input {
+    border-radius: 4px;
+    border: 0;
+    height: 30px;
+    width: 220px;
+    overflow: scroll;
+    font-size: 14px;
+    box-shadow: 0px 0px 1.5px 0px black;
+}
+.leaveComm > button {
+    height: 29px;
+    padding: 2px;
+    background: #3EA6FF;
+    border-radius: 2px;
+    border: 1px black solid;
+    position: relative;
+    left: 10px;
+    font-size: 13px;
+}
+.chatUser {
+    position: relative;
+    top:-10px;
+
+}
+.userProfComm {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+.userName {
+    font-size: 15px;
+}
+.userProfComm > img {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+}
+.userComment {
+    font-size: 14px;
+}
+.userReactions {
+    display: flex;
+    /* background: red; */
+    width: 100px;
+    height: 20px;
+    float: right;
+    align-items: center;
+    justify-content: space-around;
+}
+.userReactions > div > i {
+    font-size: 18px;
+}
+/* ---------------------- */

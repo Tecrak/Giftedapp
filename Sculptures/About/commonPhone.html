@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ab3a47a664.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="commonPhone.css" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="phoneContainer">
+        <div class="phoneTopBlack"></div>
+        <div class="phoneContent">
+            <div class="navigationBlock" id="navigationBlock">
+                <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
+                    <ul class="navigationMenu" id="navigationMenu">
+                        <div class="closeMenu" id="chrestMenu" onclick="closeMenu()"><i class="fa-solid fa-xmark" style="cursor: pointer;"></i></div>
+                        <li id="openMap" onclick="opemMaap()">Map</li>
+                        <li id="openScul" onclick="openSculptures()">Sculptures</li>
+                        <li>About</li>
+                        <li id="openContr" onclick="openContributors()">Contributors</li>
+                    </ul>
+                </div>
+                <div class="navigationLogo">Gifted</div>
+            </div>
+            <div class="contentBlock">
+                <h2>About</h2>
+                <div class="townOfCult">
+                    <h3>TOWN OF CULTURE</h3>
+                    <p>Ukraine (/juːˈkreɪn/ ⓘ yoo-KRAYN; Ukrainian: Україна, romanized: Ukraina, pronounced [ʊkrɐˈjinɐ] ⓘ) is a country in Eastern Europe. It is the second-largest European country after Russia, which borders it to the east and northeast.[a][10] It also borders Belarus to the north; Poland, Slovakia, and Hungary to the west; and Romania and Moldova[b] to the southwest; with a coastline along the Black Sea and the Sea of Azov to the south and southeast.[c] Kyiv is the nation's capital and largest city, followed by Kharkiv, Dnipro and Odesa. Ukraine's official language is Ukrainian; Russian is also widely spoken, especially in the east and south.</p> 
+                </div>
+                <div class="giftedSculpt">
+                    <h3>GIFTED SCULPTURE TRAIL</h3>
+                    <p>Ukraine (/juːˈkreɪn/ ⓘ yoo-KRAYN; Ukrainian: Україна, romanized: Ukraina, pronounced [ʊkrɐˈjinɐ] ⓘ) is a country in Eastern Europe. It is the second-largest European country after Russia, which borders it to the east and northeast.[a][10] It also borders Belarus to the north; Poland, Slovakia, and Hungary to the west; and Romania and Moldova[b] to the southwest; with a coastline along the Black Sea and the Sea of Azov to the south and southeast.[c] Kyiv is the nation's capital and largest city, followed by Kharkiv, Dnipro and Odesa. Ukraine's official language is Ukrainian; Russian is also widely spoken, especially in the east and south.</p>
+                </div>
+            </div>
+        </div>
+        <div class="phoneBottomBlack"></div>
+    </div>
+    <script> //Navigation open functions
+        const navigationMenu = document.getElementById("navigationMenu");    
+        const chrestMenu = document.getElementById("chrestMenu");
+        const navigationIcon = document.getElementById("navigationIcon");
+
+        function openMenu() {
+            navigationMenu.style.opacity="1";
+            navigationMenu.style.width="57%";
+            navigationMenu.style.pointerEvents="all";
+            setTimeout(() => {
+                chrestMenu.style.opacity="1";
+            }, 40);
+            navigationIcon.style.color="#00068C";
+        }
+        function closeMenu() {
+            setTimeout(() => {
+                navigationMenu.style.width = "0";
+                navigationMenu.style.pointerEvents = "none"; 
+                setTimeout(() => {
+                    chrestMenu.style.opacity="0";
+                    navigationIcon.style.color="white";
+                }, 41);
+                setTimeout(() => {
+                    navigationMenu.style.opacity = "0";
+                }, 301);
+            }, 1); 
+        }
+    </script>
+        <script> //Open brief info
+            function openSculptures() {
+            window.location.href = '../Sculptures/index.html';
+            }
+            function openContributors() {
+                window.location.href = '../Contributions/commonPhone.html';
+            }
+            function opemMaap() {
+                window.location.href = '../Map/index.html';
+            }
+        </script>
+</body>
+</html>

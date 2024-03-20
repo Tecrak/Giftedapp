@@ -1,0 +1,181 @@
+@font-face {
+    font-family: 'Brushberry Script';
+    src: url('../font/Brushberry Script.otf') format('opentype');
+}
+@font-face {
+    font-family: "ApfelGrotezk";
+    src: url("../font/ApfelGrotezk-Regular.woff2") format("woff2");
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "ApfelGrotezk";
+    font-size: 15px;
+}
+* > ul {
+    list-style: none;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    display: flex;
+}
+
+/* Phone model */
+.phoneContainer {
+    width: 100%;
+    
+
+} 
+.zoomedMap {
+    position: absolute;
+    left: 150px;
+}
+.phoneContent {
+    z-index: 999999;
+    height: 100%;
+    top:0px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+/*--------------------------  */
+/* Top navigation styles */
+.navigationBlock {
+    display: flex;
+    transition: background 0.4s ease;
+    background: #FFE40D;
+}
+.navigationMenu {
+    position: absolute;
+    z-index: 3;
+    background: url(../img/navigateBack.png);
+    color: #00068C;
+    box-shadow: 1px 0px 2px 0px black;
+    opacity: 0;
+    pointer-events: none;
+    /* padding-right: 1px; */
+    top: 0px;
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden; /* Add this line to hide content when width is 0 */
+}
+.navigationMenu::before {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.54);
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.closeMenu {
+    color:#00068C;
+    right: 4px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 3;
+}
+.navigationIcon {
+    color: white;
+    text-shadow: 0px 1px 0px black;
+}
+.navigationMenu > li {
+    position: relative;
+    border-bottom:1.5px rgb(216, 216, 216) solid;
+    top:48px;
+    /* margin-top: 10px; */
+    /* background: rgba(232, 232, 232, 0.929); */
+    font-weight: bold;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding-left: 12px;
+}
+.navigationMenu > li:nth-child(2) {
+    background: linear-gradient(45deg,#FFC3E3 80%, #ff0088a8 20%);
+}
+.navigationMenu > li:nth-child(3) {
+    background: linear-gradient(135deg, #EDAEFA  80%,#c700ef9f 20%);
+}
+.navigationMenu > li:nth-child(4) {
+    background: linear-gradient(45deg,#FFF7B9 80%, #ffe100bd 20%);
+}
+.navigationMenu > li:nth-child(5) {
+    background: linear-gradient(135deg,#BBFDEF 80%, #00F6BF 20%);
+}
+.navigationIcon > li {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    top:100px;
+}
+.navigationIcon > i {
+    position: relative;
+    z-index: 4;
+    font-size: 38px;
+    /* background: red; */
+    transition: color 0.7s ease;
+    padding:3px 5px;
+    cursor: pointer;
+}
+.navigationLogo {
+    /* background: green; */
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    padding-top: 10px;
+    color:white;
+    text-shadow: 1px 1px 3px black;
+    font-weight: bold;
+    font-family: 'Brushberry Script', cursive;
+    position: relative;
+    font-style: normal;
+}
+/* --------------------------- */
+
+/* Center Part styles */
+.contentBlock{
+    /* background: blue; */
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: url(../img/yellowBack.png) center center/cover;
+    position: relative;
+    /* top:5px; */
+}
+.contentBlock > * {
+    position: relative;
+    color:#00068C;
+}
+.contentBlock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    background: rgba(255, 255, 255, 0.51);
+    
+}
+.contentBlock > h2 {
+    font-size: 35px;
+}
+.giftedSculpt {
+    position: relative;
+    margin-top: 35px;
+}
+.contentBlock > div > h3 {
+    font-weight: 600;
+    font-size: 18px;
+}
+/* --------------------------- */

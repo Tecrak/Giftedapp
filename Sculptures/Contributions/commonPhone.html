@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ab3a47a664.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="commonPhone.css" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="phoneContainer">
+        <div class="phoneContent">
+            <div class="navigationBlock">
+                <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
+                    <ul class="navigationMenu" id="navigationMenu">
+                        <div class="closeMenu" id="chrestMenu" onclick="closeMenu()"><i class="fa-solid fa-xmark" style="cursor: pointer;"></i></div>
+                        <li id="openMap" onclick="opemMaap()">Map</li>
+                        <li id="openScul" onclick="openSculptures()">Sculptures</li>
+                        <li id="openAb" onclick="openAbout()">About</li>
+                        <li>Contributors</li>
+                    </ul>
+                </div>
+                <div class="navigationLogo">Gifted</div>
+            </div>
+            <div class="contentBlock">
+                <h2>Contributors</h2>
+                <div class="admins">
+                    <ul> TOWN OF CULTURE
+                        <li>-Tyler Davies-Knowles <a href="https://www.instagram.com/td_design17/" target="_blank">@td_design17</a></li>
+                        <li>-Su Vosper <a href="https://www.instagram.com/susannavosper/" target="_blank">@susannavosper</a></li>
+                        <li>-Jodhi Anne <a href="https://www.instagram.com/jodhianne_illustration/?igsh=MWF5amYzd3F3emVl" target="_blank">@jodhianne_illustration</a></li>
+                        <li>-ChiChi Li</li>
+                        <li>-Max Acvents <a href="https://www.instagram.com/acventz/" target="_blank">@acventz</a></li>
+                        <li>-Holly Moores</li>
+                        <li>-Sarah Wildle <a href="https://www.instagram.com/the_wilde_wood_studio/" target="_blank">@the_wilde_wood_studio</a></li>
+                        <li>-Holly Moores <a href="https://www.instagram.com/lazykitten27/" target="_blank">@lazykitten27</a></li>
+                        <li>-Charlie Caton <a href="https://www.instagram.com/charlietheidkyet?igsh=MWhrYmZ6bGg5NnpkZQ==" target="_blank">@charlietheidkyet</a></li>
+                        <li>-Libby Barratt <a href="https://www.instagram.com/libby_designs/" target="_blank">@libby_design</a></li>
+                        <li>-Alice Gill <a href="https://www.instagram.com/agillustrationss?igsh=MXFjYWpxa2F1bTAzdw==" target="_blank">@jodhianne_illustration</a></li>
+                        <li>-Ella Brian</li>
+                        <li>-Julian Farghaly <a href="https://www.instagram.com/jimboyasu?igsh=cGJsa2o2emQ5ZWM5" target="_blank">@jimboyasu</a></li>
+                        <li>-Emmi Stuart-Crush <a href="https://www.instagram.com/acoyoteee/?next=%2Fmiapiperxo%2F" target="_blank">@acoyoteee</a></li>
+                        <li>-Luke Knight <a href="https://www.instagram.com/kukelnight/" target="_blank">@kukelnight</a></li>
+                        <li>-Kit Paterson <a href="https://www.instagram.com/kit_n_kboodl/" target="_blank">@kit_n_kboodl</a></li>
+                        <li>-Shakeel Khan <a href="https://www.instagram.com/only.shak/" target="_blank">@only.shak</a></li>
+                        <li>-Jessica Hutton</li>
+                    </ul>
+                </div>
+                <div class="admins">
+                    <ul> ADMIN/MISC
+                        <li>-Sarah Wildle <a href="https://www.instagram.com/the_wilde_wood_studio/" target="_blank">@the_wilde_wood_studio</a></li>
+                        <li>-Su Vosper <a href="https://www.instagram.com/susannavosper/" target="_blank">@susannavosper</a></li>
+                        <li>-Tyler Davies-Knowles <a href="https://www.instagram.com/td_design17/" target="_blank">@td_design17</a></li>
+                        <li>-Cameron Steward</li>
+                        <li>-Nikki Darham</li>
+                        <li>-Hazel Roberts</li>
+                        <li>-Denise Irving</li>
+                    </ul>
+                </div>
+                <div class="impletemntors">
+                    <ul> IMPLEMENTATION/IT
+                        <li>-Stanislav Ponomarchuk <a href="https://www.instagram.com/shybenykhihihaha/" target="_blank">@shybenykhihihaha</a></li>
+                        <li>-Muhammad Zubair Ahmed</li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    <script> //Navigation open functions
+        const navigationMenu = document.getElementById("navigationMenu");    
+        const chrestMenu = document.getElementById("chrestMenu");
+        const navigationIcon = document.getElementById("navigationIcon");
+
+        function openMenu() {
+            navigationMenu.style.opacity="1";
+            navigationMenu.style.width="57%";
+            navigationMenu.style.pointerEvents="all";
+            setTimeout(() => {
+                chrestMenu.style.opacity="1";
+            }, 40);
+            navigationIcon.style.color="#00068C";
+        }
+        function closeMenu() {
+            setTimeout(() => {
+                navigationMenu.style.width = "0";
+                navigationMenu.style.pointerEvents = "none"; 
+                setTimeout(() => {
+                    chrestMenu.style.opacity="0";
+                    navigationIcon.style.color="white";
+                }, 41);
+                setTimeout(() => {
+                    navigationMenu.style.opacity = "0";
+                }, 301);
+            }, 1); 
+        }
+    </script>
+        <script> //Open brief info
+            function openSculptures() {
+                window.location.href = '../Sculptures/index.html';
+            }   
+            function openAbout() {
+                window.location.href = '../About/commonPhone.html';
+            }
+            function opemMaap() {
+                window.location.href = '../Map/index.html';
+            }
+        </script>
+</body>
+</html>

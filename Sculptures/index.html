@@ -2,89 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5; URL='https://tecrak.github.io/Giftedapp/Map/index.html'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ab3a47a664.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="commonPhone.css" type="text/css">
     <title>Document</title>
 </head>
 <body>
     <div class="phoneContainer">
         <div class="phoneContent">
-            <div class="navigationBlock">
-                <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
-                    <ul class="navigationMenu" id="navigationMenu">
-                        <div class="closeMenu" id="chrestMenu" onclick="closeMenu()"><i class="fa-solid fa-xmark" style="cursor: pointer;"></i></div>
-                        <li id="openMap" onclick="opemMaap()">Map</li>
-                        <li>Sculptures</li>
-                        <li id="openAb" onclick="openAbout()">About</li>
-                        <li id="openContr" onclick="openContributors()">Contributors</li>
-                    </ul>
+            <div class="middleElemets">
+                <div class="shapes">
+                    <img src="/img/yellow_snake.png" type="img/png" alt="">
+                    <img src="/img/lazure_owl-removebg-preview.png" type="img/png" alt="">
+                    <img src="/img/pink_star.png" type="img/png" alt="">
+                    <img src="/img/purple_owls.png" type="img/png" alt="">
                 </div>
-                <div class="navigationLogo">Gifted</div>
+                <div class="middleText">
+                    <h1 class="GifWhite" id="colorChangeText">Gifted</h1>
+                    <!-- <h1 class="GifBlack">Gifted</h1> -->
+                    <p id="oo">Sculpture Trail</p>
+                </div>
             </div>
-            <div class="contentBlock">
-                <ul class="sculptureList" id="sculptureList">
-                    <p>List of sculptures</p>
-                    <li onclick="openTaras()">Taras Hryhorovych Shevchenko <div class="sculptImg" style="background: url(../img/TarasIcon.jpg) center center/cover; border: none; border-radius: 100%;"></div></li>
-                    <li>Ivan Yakovych Franko <div class="sculptImg" style="background: url(../img/IvanFranko.jpg) center center/cover; border: none; border-radius: 100%;"></div></li>
-                    <li>Sculpture 3 <div class="sculptImg"></div></li>
-                    <li>Sculpture 4 <div class="sculptImg"></div></li>
-                    <li>Sculpture 5 <div class="sculptImg"></div></li>
-                    <li>Sculpture 6 <div class="sculptImg"></div></li>
-                    <li>Sculpture 7 <div class="sculptImg"></div></li>
-                    <li>Sculpture 8 <div class="sculptImg"></div></li>
-                    <li>Sculpture 9 <div class="sculptImg"></div></li>
-                    <li>Sculpture 10 <div class="sculptImg"></div></li>
-                    <li>Sculpture 11 <div class="sculptImg"></div></li>
-                    <li>Sculpture 12 <div class="sculptImg"></div></li>
-                    <li>Sculpture 13 <div class="sculptImg"></div></li>
-                    <li>Sculpture 14 <div class="sculptImg"></div></li>
-                    <li>Sculpture 15 <div class="sculptImg"></div></li>
-                    <li>Sculpture 16 <div class="sculptImg"></div></li>
-                </ul>
-            </div>
+        </div>
     </div>
-    <script> //Navigation open functions
-        const navigationMenu = document.getElementById("navigationMenu");    
-        const chrestMenu = document.getElementById("chrestMenu");
-        const navigationIcon = document.getElementById("navigationIcon");
-
-        function openMenu() {
-            navigationMenu.style.opacity="1";
-            navigationMenu.style.width="57%";
-            navigationMenu.style.pointerEvents="all";
-            setTimeout(() => {
-                chrestMenu.style.opacity="1";
-            }, 40);
-            navigationIcon.style.color="#00068C";
-        }
-        function closeMenu() {
-            setTimeout(() => {
-                navigationMenu.style.width = "0";
-                navigationMenu.style.pointerEvents = "none"; 
-                setTimeout(() => {
-                    chrestMenu.style.opacity="0";
-                    navigationIcon.style.color="white";
-                }, 41);
-                setTimeout(() => {
-                    navigationMenu.style.opacity = "0";
-                }, 301);
-            }, 1); 
-        }
-    </script>
-        <script> //Open brief info
-            function openContributors() {
-                window.location.href = '../Contributions/commonPhone.html';
-            }
-            function openTaras() {
-                window.location.href = '1_EscapeToThePark/commonPhone.html';
-            }
-            function openAbout() {
-                window.location.href = '../About/commonphone.html';
-            }
-            function opemMaap() {
-                window.location.href = '../Map/index.html';
-            }
-        </script>
 </body>
 </html>

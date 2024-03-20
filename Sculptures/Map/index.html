@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ab3a47a664.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>START</title>
+</head>
+<body> 
+    <div class="phoneContainer">
+        <!-- <div class="phoneTopBlack"></div> -->
+        <div class="phoneContent">
+            <div class="navigationBlock" id="navigationBlock">
+                <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
+                    <ul class="navigationMenu" id="navigationMenu">
+                        <div class="closeMenu" id="chrestMenu" onclick="closeMenu()"><i class="fa-solid fa-xmark" style="cursor: pointer;"></i></div>
+                        <li id="openMap" onclick="opemMaap()">Map</li>
+                        <li id="openScul" onclick="openSculptures()">Sculptures</li>
+                        <li id="openAb" onclick="openAbout()">About</li>
+                        <li id="openContr" onclick="openContributors()">Contributors</li>
+                    </ul>
+                </div>
+                <div class="navigationLogo">Gifted</div>
+            </div>
+            <div class="contentBlock">
+                <div class="map" id="map">
+                    <div class="realMap" id="realMap">
+                        <div class="iconsBlock" id="iconsBlock">
+                            <div class="mapIcon mapIcon1" id="mapIcon1" onclick="zoomingMap()"> <!--zoomingMap()-->
+                                <div class="mapIconN" id="mapIconN">
+                                    <div class="mapIconT" id="mapIconT" style="background: url(../img/TarasIcon.jpg) center center/cover;" onclick="openOne()">
+                                    </div>
+                                    <div class="mapIconI" id="mapIconI" style="background: url(../img/IvanFranko.jpg) center center/cover;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pointChat" id="pointChat">
+                    <div class="closeChat" onclick="closeChat()" >
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="aboutSculpt">
+                        <div class="aboutText">
+                            <h3>Taras Shevchenko</h3>
+                            <img class="aboutImg" src="panTaras.jpg">
+                            <p>The Taras Shevchenko Memorial is a bronze statue and stone relief-adorned wall located on the 2200 block of P Street NW in the Dupont Circle neighborhood of Washington, D.C., United States. It is one of many monuments in Washington, D.C. that honor foreign heroes who symbolize freedom in their native countries. Sculpted by Leo Mol, the memorial honors Taras Shevchenko (1814–1861), a Ukrainian poet and artist who influenced the development of modern Ukrainian literature.<span style="margin: 0;padding: 0; font-size: 16px; color:blue; font-weight:bold;float:right;">Read more >></span></p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="sculptureList" id="sculptureList">
+                    <div class="expandList" id="gripper">
+                        <i class="fa-solid fa-grip-lines" id="gripIcon"></i>
+                        <!-- <i class="fa-solid fa-angles-down" id="gripReset"></i> -->
+                    </div>
+                    <p>List of sculptures</p>
+                    <li onclick="openOne()">Escape to the Park <div class="sculptImg"><img src="../img/Escape to the Park.png" type="img/png"></div></li>
+                    <li onclick="openTwo()">The Dream<div class="sculptImg" style="background: url(../img/TheDream.png) center center/cover;"></div></li>
+                    <li onclick="openThree()">Nostalgia<div class="sculptImg"><img src="../img/Nostalgia.png" type="img/png"></div></li>
+                    <li onclick="openFour()">Sprout<div class="sculptImg"><img src="../img/Sprout.png" type="img/png"></div></li>
+                    <li onclick="openFive()">Untitled<div class="sculptImg"><img src="../img/TarasIcon.jpg" type="img/png"></div></li>
+                    <li onclick="openSix()">Brewser<div class="sculptImg"><img src="../img/Brewser.png" type="img/png"></div></li>
+                    <li onclick="openSeven()">Battyfields<div class="sculptImg"><img src="../img/BattyFields.png" type="img/png"></div></li>
+                    <li onclick="openEight()">ABAN<div class="sculptImg"><img src="../img/ABAN.png" type="img/png"></div></li>
+                    <li onclick="openNine()">True Self<div class="sculptImg"><img src="../img/TrueSelf.png" type="img/png"></div></li>
+                    <li onclick="openTen()">Me Gnashers<div class="sculptImg"><img src="../img/IvanFranko.jpg" type="img/png"></div></li>
+                    <li onclick="openEleven()">Synesthesia<div class="sculptImg"><img src="../img/Synesthesia.png" type="img/png"></div></li>
+                    <li onclick="openTwelve()">Grow a Pear<div class="sculptImg"><img src="../img/GrowAPear.png" type="img/png"></div></li>
+                    <li onclick="openTry()">16:03<div class="sculptImg"><img src="../img/1603.png" type="img/png"></div></li>
+                    <li onclick="openCho()">BIOSCOOP<div class="sculptImg"><img src="../img/BIOSCOOP.png" type="img/png"></div></li>
+                    <li onclick="openPja()">How about Hat<div class="sculptImg"><img src="../img/HowAboutHat.png" type="img/png"></div></li>
+                    <li onclick="openShist()">All That Glitters is not Gold<div class="sculptImg"><img src="../img/Glitters.png" type="img/png"></div></li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="phoneBottomBlack"></div> -->
+    </div>
+    <script> //Navigation open functions
+        const navigationMenu = document.getElementById("navigationMenu");    
+        const chrestMenu = document.getElementById("chrestMenu");
+        const navigationIcon = document.getElementById("navigationIcon");
+
+        function openMenu() {
+            navigationMenu.style.opacity="1";
+            navigationMenu.style.width="57%";
+            navigationMenu.style.pointerEvents="all";
+            setTimeout(() => {
+                chrestMenu.style.opacity="1";
+            }, 40);
+            navigationIcon.style.color="#00068C";
+        }
+        function closeMenu() {
+            setTimeout(() => {
+                navigationMenu.style.width = "0";
+                navigationMenu.style.pointerEvents = "none"; 
+                setTimeout(() => {
+                    chrestMenu.style.opacity="0";
+                    navigationIcon.style.color="white";
+                }, 41);
+                setTimeout(() => {
+                    navigationMenu.style.opacity = "0";
+                }, 301);
+            }, 1); 
+        }
+    </script>
+    <script> // Drag menu
+        const sculptureList = document.getElementById('sculptureList');
+        const map = document.getElementById('map');
+        const iconsBlock= document.getElementById('iconsBlock');
+        const mapIcon1 =document.getElementById('mapIcon1');
+        const expandButton = document.getElementById('gripper');
+        const navigationBlock = document.getElementById('navigationBlock');
+        let startY;
+        let initialMapHeight;
+        let initialSculptureListHeight;
+        let isDragging = false;
+
+        function startDrag(e) {
+            e.preventDefault();
+            if (e.type === 'mousedown') {
+                startY = e.clientY;
+            } else if (e.type === 'touchstart') {
+                startY = e.touches[0].clientY;
+            }
+            initialMapHeight = parseFloat(getComputedStyle(map).height);
+            initialSculptureListHeight = parseFloat(getComputedStyle(sculptureList).height);
+            isDragging = true;
+            if (e.type === 'mousedown') {
+                document.addEventListener('mousemove', handleDrag);
+                document.addEventListener('mouseup', stopDrag);
+            } else if (e.type === 'touchstart') {
+                document.addEventListener('touchmove', handleDrag);
+                document.addEventListener('touchend', stopDrag);
+            }
+        }
+
+        expandButton.addEventListener('mousedown', startDrag);
+        expandButton.addEventListener('touchstart', startDrag);
+
+        function handleDrag(e) {
+            let clientY;
+            if (e.type === 'mousemove') {
+                clientY = e.clientY;
+            } else if (e.type === 'touchmove') {
+                clientY = e.touches[0].clientY;
+            }
+            const deltaY = clientY - startY;
+            const percentageChange = deltaY + 12;
+            let newMapHeight = initialMapHeight + percentageChange;
+            // Limit the maximum height for .map to calc(506%)
+            if (newMapHeight > 506) {
+                newMapHeight = 506;
+            }
+            let newSculptureListHeight = initialSculptureListHeight - percentageChange;
+            // Set the minimum height for .sculptureList to 23
+            if (newSculptureListHeight < 23) {
+                newSculptureListHeight = 23;
+            }
+            map.style.height = `calc(${newMapHeight}%)`;
+            sculptureList.style.height = `calc(${newSculptureListHeight}%)`;
+            map.style.transition = 'height 0.01s ease-in-out, background 0.5s ease';
+            sculptureList.style.transition = 'height 0.01s ease-in-out, background 0.1s ease';
+
+            iconsBlock.style.opacity = '0';
+            iconsBlock.style.pointerEvents = 'none';
+        }
+
+        function stopDrag(e) {
+            if (e.type === 'mouseup') {
+                document.removeEventListener('mousemove', handleDrag);
+                document.removeEventListener('mouseup', stopDrag);
+            } else if (e.type === 'touchend') {
+                document.removeEventListener('touchmove', handleDrag);
+                document.removeEventListener('touchend', stopDrag);
+            }
+            isDragging = false;
+        }
+
+        // Check if .map height is > 356 and not dragging, then set it to 506
+        setInterval(() => {
+            const currentMapHeight = parseFloat(getComputedStyle(sculptureList).height);
+            if (!isDragging && currentMapHeight > 486) {
+                sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
+                map.style.height = 'calc(-40%)';
+                sculptureList.style.height = 'calc(702%)';
+                map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
+                sculptureList.style.background = "url(../img/purpleBack.png) center center/cover";
+                navigationBlock.style.background = "#C800EF";
+            }
+            else {
+                sculptureList.style.background = "url(../img/pinkBack.png) center center/cover";
+                navigationBlock.style.background = "#FF57B1";
+            }
+        }, 10);
+
+        setInterval(() => {
+            const currentMapHeight = parseFloat(getComputedStyle(sculptureList).height);
+            if (!isDragging && currentMapHeight < 485 && currentMapHeight > 249) {
+                map.style.height = 'calc(50%)';
+                sculptureList.style.height = 'calc(50%)';
+                map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
+                sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.1s ease';
+                iconsBlock.style.opacity = '1';
+                iconsBlock.style.pointerEvents = 'all';
+                mapIcon1.style.left = '106px';
+                mapIcon1.style.top = '27px';
+            }
+        }, 10);
+
+        setInterval(() => {
+            const currentMapHeight = parseFloat(getComputedStyle(sculptureList).height);
+            if (!isDragging && currentMapHeight < 248) {
+                map.style.height = 'calc(506%)';
+                sculptureList.style.height = 'calc(50%)';
+                map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
+                sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.1s ease';
+                iconsBlock.style.opacity = '1';
+                iconsBlock.style.pointerEvents = 'all';
+                mapIcon1.style.left = '104px';
+                mapIcon1.style.top = '144px';
+            }
+        }, 10);
+    </script>
+    <script> //Open brief info
+        function openOne() {
+                window.location.href = '../Sculptures/1_EscapeToThePark/commonPhone.html';
+            }
+            function openTwo() {
+                window.location.href = '../Sculptures/2_TheDream/commonPhone.html';
+            }
+            function openThree() {
+                window.location.href = '../Sculptures/3_Nostalgia/commonPhone.html';
+            }
+            function openFour() {
+                window.location.href = '../Sculptures/4_Sprout/commonPhone.html';
+            }
+            function openFive() {
+                window.location.href = '../Sculptures/5_Untitled/commonPhone.html';
+            }
+            function openSix() {
+                window.location.href = '../Sculptures/6_Brewser/commonPhone.html';
+            }
+            function openSeven() {
+                window.location.href = '../Sculptures/7_BattyFields/commonPhone.html';
+            }
+            function openEight() {
+                window.location.href = '../Sculptures/8_ABAN/commonPhone.html';
+            }
+            function openNine() {
+                window.location.href = '../Sculptures/9_TrueSelf/commonPhone.html';
+            }
+            function openTen() {
+                window.location.href = '../Sculptures/10_MeGnashers/commonPhone.html';
+            }
+            function openEleven() {
+                window.location.href = '../Sculptures/11_Synesthesia/commonPhone.html';
+            }
+            function openTwelve() {
+                window.location.href = '../Sculptures/12_GrowAPear/commonPhone.html';
+            }
+            function openTry() {
+                window.location.href = '../Sculptures/13_Numbers/commonPhone.html';
+            }
+            function openCho() {
+                window.location.href = '../Sculptures/14_BIOSCOOP/commonPhone.html';
+            }
+            function openPja() {
+                window.location.href = '../Sculptures/15_HowAboutHat/commonPhone.html';
+            }
+            function openShist() {
+                window.location.href = '../Sculptures/16_Glitters/commonPhone.html';
+            }
+        function openSculptures() {
+            window.location.href = '../Sculptures/index.html';
+        }
+        function openContributors() {
+            window.location.href = '../Contributions/commonPhone.html';
+        }
+        function openAbout() {
+            window.location.href = '../About/commonPhone.html';
+        }
+        function opemMaap() {
+            window.location.href = '../Map/index.html';
+        }
+    </script>
+    </script>
+    <script> // Spliting
+        document.addEventListener('DOMContentLoaded', function() {
+            const map = document.getElementById('map');
+            const mapIcon = document.getElementById('mapIcon1');
+            const mapIconN = document.getElementById('mapIconN');
+            const maxScale = 2.0;
+            const minScale = 0.5;
+            let currentScale = 1.0;
+
+            // Function to adjust elements based on scale
+            const adjustElementsOnScale = function(scale) {
+                map.style.transform = `scale(${scale})`;
+                if (scale > 1.8) {
+                    mapIcon.style.animation = "none";
+                    mapIcon.style.background = "transparent";
+                    mapIcon.style.border = "none";
+                    mapIcon.style.pointerEvents = "none";
+                    mapIconN.style.opacity = "1";
+                    mapIconN.style.pointerEvents = "all";
+                    setTimeout(() => {
+                        mapIconT.style.top = "-15px";
+                        mapIconT.style.left = "10px";
+                        mapIconI.style.top = "6px";
+                        mapIconI.style.left = "-10px";
+                    }, 100);
+                } else {
+                    mapIcon.style.border = "0.5px rgb(0, 247, 255) solid";
+                    mapIcon.style.pointerEvents = "all";
+                    mapIconN.style.opacity = "0";
+                    mapIconN.style.pointerEvents = "none";
+
+                    setTimeout(() => {
+                        mapIconT.style.top = "-0";
+                        mapIconT.style.left = "0";
+                        mapIconI.style.top = "0";
+                        mapIconI.style.left = "-0";
+                    }, 100);
+                    mapIcon.style.animation = "fancy 6s  steps(120) infinite"; // Adjust the animation name and duration
+                }
+            };
+
+            // Call adjustElementsOnScale function on map scale change
+            map.addEventListener('wheel', function(event) {
+                event.preventDefault();
+                let scale = currentScale;
+                if (event.deltaY < 0 && currentScale < maxScale) {
+                    scale += 0.1; // Increase scale on scroll up
+                } else if (event.deltaY > 0 && currentScale > minScale) {
+                    scale -= 0.1; // Decrease scale on scroll down
+                }
+                adjustElementsOnScale(scale);
+                currentScale = scale;
+            });
+        });
+    </script>
+    <script> // Zooming
+        const realMap = document.querySelector('.map');
+
+        // Map zooming for mouse
+        realMap.addEventListener('mouseenter', function() {
+            this.addEventListener('wheel', scaleMap);
+        });
+
+        realMap.addEventListener('mouseleave', function() {
+            this.removeEventListener('wheel', scaleMap);
+        });
+
+        // Map zooming for touch
+        realMap.addEventListener('touchstart', function(event) {
+            if (event.touches.length === 2) {
+                const currentScale = getCurrentScale(this);
+                this.initialScale = currentScale;
+                this.initialTouches = event.touches;
+                this.addEventListener('touchmove', scaleMapTouch);
+            }
+        });
+
+        realMap.addEventListener('touchend', function() {
+            this.removeEventListener('touchmove', scaleMapTouch);
+            this.initialScale = null; // Reset initial scale after touch ends
+            this.initialTouches = null; // Reset initial touch positions after touch ends
+        });
+
+        function getCurrentScale(element) {
+            const transform = window.getComputedStyle(element).transform;
+            const match = transform.match(/matrix\(([^\)]+)\)/);
+            if (match) {
+                const matrix = match[1].split(', ');
+                return parseFloat(matrix[0]);
+            }
+            return 1;
+        }
+
+        function scaleMap(event) {
+            event.preventDefault();
+            const delta = event.deltaY || event.detail || event.wheelDelta;
+            const scaleChange = delta > 0 ? -0.1 : 0.1; // Adjust scaling speed
+
+            let currentScale = getCurrentScale(this);
+            const newScale = Math.max(1, Math.min(currentScale + scaleChange, 8)); // Ensure scale stays within limits
+
+            this.style.transform = `scale(${newScale})`;
+
+            // Adjust the transform origin based on the mouse position
+            const rect = this.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            const percentX = mouseX / rect.width;
+            const percentY = mouseY / rect.height;
+
+            const newX = percentX * 100;
+            const newY = percentY * 100;
+
+            this.style.transformOrigin = `${newX}% ${newY}%`;
+        }
+
+        function scaleMapTouch(event) {
+            event.preventDefault();
+
+            const touch1 = event.touches[0];
+            const touch2 = event.touches[1];
+
+            const currentDistance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
+            const initialDistance = Math.hypot(this.initialTouches[1].clientX - this.initialTouches[0].clientX, this.initialTouches[1].clientY - this.initialTouches[0].clientY);
+
+            if (!this.initialScale) {
+                this.initialScale = getCurrentScale(this);
+                return;
+            }
+
+            const scaleChange = (currentDistance - initialDistance) / 100;
+
+            let currentScale = this.initialScale || 1;
+            const newScale = Math.max(1, Math.min(currentScale + scaleChange, 8)); // Ensure scale stays within limits
+
+            this.style.transform = `scale(${newScale})`;
+
+            // Adjust the transform origin based on the touch positions
+            const rect = this.getBoundingClientRect();
+            const touch1X = this.initialTouches[0].clientX - rect.left;
+            const touch1Y = this.initialTouches[0].clientY - rect.top;
+            const touch2X = this.initialTouches[1].clientX - rect.left;
+            const touch2Y = this.initialTouches[1].clientY - rect.top;
+
+            const centerX = (touch1X + touch2X) / 2;
+            const centerY = (touch1Y + touch2Y) / 2;
+
+            const percentX = centerX / rect.width;
+            const percentY = centerY / rect.height;
+
+            const newX = percentX * 100;
+            const newY = percentY * 100;
+
+            this.style.transformOrigin = `${newX}% ${newY}%`;
+        }
+    </script>
+</body>
+</html>
