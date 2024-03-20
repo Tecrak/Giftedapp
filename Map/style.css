@@ -37,7 +37,7 @@ body, html {
     z-index: 999999;
     height: 100%;
     top:0px;
-    overflow: hidden;
+    overflow: scroll;
     width: 100%;
     position: relative;
 }
@@ -266,7 +266,7 @@ body, html {
     z-index: 1;
     height: 50%; 
     /* transition: height 0.01s ease-in-out, top 0.01s ease-in-out, background 0.5s ease; */
-    overflow: hidden;
+    overflow: scroll    ;
 }
 .sculptureList::before{
     content: '';
