@@ -15,10 +15,10 @@
                 <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
                     <ul class="navigationMenu" id="navigationMenu">
                         <div class="closeMenu" id="chrestMenu" onclick="closeMenu()"><i class="fa-solid fa-xmark" style="cursor: pointer;"></i></div>
-                        <a href="#"><li>Map</li></a>
-                        <a href="#"><li>Sculptures</li></a>
-                        <a href="/Website/about/commonPhone.html"><li>About</li></a>
-                        <a href="/Website/contributions/commonPhone.html"><li>Contributors</li></a>
+                        <li id="openMap" onclick="opemMaap()">Map</li>
+                        <li>Sculptures</li>
+                        <li id="openAb" onclick="openAbout()">About</li>
+                        <li id="openContr" onclick="openContributors()">Contributors</li>
                     </ul>
                 </div>
                 <div class="navigationLogo">Gifted</div>
@@ -167,6 +167,20 @@
         const audioPlayer = document.getElementById('audioPlayer');
         audioPlayer.addEventListener('play', startImageRotation);
         audioPlayer.addEventListener('pause', stopImageRotation);
+    </script>
+    <script> //Open brief info
+        function openTaras() {
+            window.location.href = '../Sculpture Page/commonPhone.html';
+        }
+        function openContributors() {
+            window.location.href = '../Contributions/commonPhone.html';
+        }
+        function openAbout() {
+            window.location.href = '../Map/index.html';
+        }
+        function opemMaap() {
+            
+        }
     </script>
 
 </body>
