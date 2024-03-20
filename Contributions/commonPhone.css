@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'Brushberry Script';
-    src: url('font/Brushberry Script.otf') format('opentype');
+    src: url('../font/Brushberry Script.otf') format('opentype');
 }
 @font-face {
     font-family: "ApfelGrotezk";
-    src: url("font/ApfelGrotezk-Regular.woff2") format("woff2");
+    src: url("../font/ApfelGrotezk-Regular.woff2") format("woff2");
 }
 * {
     margin: 0;
@@ -51,7 +51,7 @@ body, html {
 .navigationMenu {
     position: absolute;
     z-index: 3;
-    background: url(navigateBack.png);
+    background: url(../img/navigateBack.png);
     color: #00068C;
     box-shadow: 1px 0px 2px 0px black;
     opacity: 0;
@@ -150,7 +150,7 @@ body, html {
     display: flex;
     flex-direction: column;
     position: relative;
-    background: url(greenBack.png) center center/cover;
+    background: url(../img/greenBack.png) center center/cover;
     /* top:5px; */
 }
 .contentBlock::before {

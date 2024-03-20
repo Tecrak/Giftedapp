@@ -14,9 +14,9 @@
                 <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
                     <ul class="navigationMenu" id="navigationMenu">
                         <div class="closeMenu" id="chrestMenu" onclick="closeMenu()"><i class="fa-solid fa-xmark" style="cursor: pointer;"></i></div>
-                        <li>HOME</li>
-                        <li>SCULPTURES</li>
-                        <li>About</li>
+                        <li id="openMap" onclick="opemMaap()">Map</li>
+                        <li>Sculptures</li>
+                        <li id="openAb" onclick="openAbout()">About</li>
                         <li>Contributors</li>
                     </ul>
                 </div>
@@ -93,5 +93,16 @@
             }, 1); 
         }
     </script>
+        <script> //Open brief info
+            function openTaras() {
+                window.location.href = '../Sculpture Page/commonPhone.html';
+            }
+            function openAbout() {
+                window.location.href = '../About/commonphone.html';
+            }
+            function opemMaap() {
+                window.location.href = '../Map/index.html';
+            }
+        </script>
 </body>
 </html>

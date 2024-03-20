@@ -15,7 +15,7 @@
                 <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
                     <ul class="navigationMenu" id="navigationMenu">
                         <div class="closeMenu" id="chrestMenu" onclick="closeMenu()"><i class="fa-solid fa-xmark" style="cursor: pointer;"></i></div>
-                        <li>Map</li>
+                        <li id="openMap" onclick="opemMaap()">Map</li>
                         <li>Sculptures</li>
                         <li id="openAb" onclick="openAbout()">About</li>
                         <li id="openContr" onclick="openContributors()">Contributors</li>
@@ -29,9 +29,9 @@
                         <div class="iconsBlock" id="iconsBlock">
                             <div class="mapIcon mapIcon1" id="mapIcon1" onclick="zoomingMap()"> <!--zoomingMap()-->
                                 <div class="mapIconN" id="mapIconN">
-                                    <div class="mapIconT" id="mapIconT" style="background: url(TarasIcon.jpg) center center/cover;" onclick="openTaras()">
+                                    <div class="mapIconT" id="mapIconT" style="background: url(../img/TarasIcon.jpg) center center/cover;" onclick="openTaras()">
                                     </div>
-                                    <div class="mapIconI" id="mapIconI" style="background: url(IvanFranko.jpg) center center/cover;"></div>
+                                    <div class="mapIconI" id="mapIconI" style="background: url(../img/IvanFranko.jpg) center center/cover;"></div>
                                 </div>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                         <!-- <i class="fa-solid fa-angles-down" id="gripReset"></i> -->
                     </div>
                     <p>List of sculptures</p>
-                    <li onclick="openTaras()">Taras Hryhorovych Shevchenko <div class="sculptImg" style="background: url(TarasIcon.jpg) center center/cover; border: none; border-radius: 100%;"></div></li>
-                    <li>Ivan Yakovych Franko <div class="sculptImg" style="background: url(IvanFranko.jpg) center center/cover; border: none; border-radius: 100%;"></div></li>
+                    <li onclick="openTaras()">Taras Hryhorovych Shevchenko <div class="sculptImg" style="background: url(../img/TarasIcon.jpg) center center/cover; border: none; border-radius: 100%;"></div></li>
+                    <li>Ivan Yakovych Franko <div class="sculptImg" style="background: url(../img/IvanFranko.jpg) center center/cover; border: none; border-radius: 100%;"></div></li>
                     <li>Sculpture 3 <div class="sculptImg"></div></li>
                     <li>Sculpture 4 <div class="sculptImg"></div></li>
                     <li>Sculpture 5 <div class="sculptImg"></div></li>
@@ -180,11 +180,11 @@
                 map.style.height = 'calc(-40%)';
                 sculptureList.style.height = 'calc(702%)';
                 map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
-                sculptureList.style.background = "url(purpleBack.png) center center/cover";
+                sculptureList.style.background = "url(../img/purpleBack.png) center center/cover";
                 navigationBlock.style.background = "#C800EF";
             }
             else {
-                sculptureList.style.background = "url(pinkBack.png) center center/cover";
+                sculptureList.style.background = "url(../img/pinkBack.png) center center/cover";
                 navigationBlock.style.background = "#FF57B1";
             }
         }, 10);
@@ -225,8 +225,12 @@
             window.location.href = '../Contributions/commonPhone.html';
         }
         function openAbout() {
-            window.location.href = '../About/commonPhone.html';
+            window.location.href = '../About/commonphone.html';
         }
+        function opemMaap() {
+            window.location.href = '../Map/index.html';
+        }
+    </script>
     </script>
     <script> // Spliting
         document.addEventListener('DOMContentLoaded', function() {
