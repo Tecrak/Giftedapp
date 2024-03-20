@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ab3a47a664.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="commonPhone.css" type="text/css">
+    <title>START</title>
+</head>
+<body>
+    <div class="phoneContainer" id="phoneContainer">
+        <div class="phoneTopBlack"></div>
+        <div class="phoneContent">
+            <div class="navigationBlock">
+                <div class="navigationIcon" onclick="openMenu()"><i class="fa-solid fa-bars" id="navigationIcon"></i>
+                    <ul class="navigationMenu" id="navigationMenu">
+                        <div class="closeMenu" id="chrestMenu" onclick="closeMenu()"><i class="fa-solid fa-xmark" style="cursor: pointer;"></i></div>
+                        <li id="openMap" onclick="opemMaap()">Map</li>
+                        <li id="openScul" onclick="openSculptures()">Sculptures</li>
+                        <li id="openAb" onclick="openAbout()">About</li>
+                        <li id="openContr" onclick="openContributors()">Contributors</li>
+                    </ul>
+                </div>
+                <div class="navigationLogo">Gifted</div>
+            </div>
+            <div class="contentBlock">
+                <h1>Brewser</h1>
+                <div class="sculptureImg">
+                    <div class="sculptImg img1" style="transform: scaleX(1); width: 320px;"></div>
+                    <div class="sculptImg img2"></div>
+                    <div class="sculptImg img3"></div>
+                </div>
+                <div class="imageCarusel">
+                    <div class="arrow" id="previous">Previous</div>
+                    <div class="arrow" id="next">Next</div>
+                </div>
+                <audio id="audioPlayer" controls>
+                    <source src="audio.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                <div class="sculptureDescription">
+                    <div class="sculptureText">
+                        <p>Holly Moores</p>
+                        <p>Stockport</p>
+                    </div>
+                    <div class="sculptureFunny">
+                        <img src="../img/Brewser.png">
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="phoneBottomBlack" id="phoneBottomBlack"></div>
+        </div>
+    </div>
+    <script> //Navigation open functions
+        const navigationMenu = document.getElementById("navigationMenu");    
+        const chrestMenu = document.getElementById("chrestMenu");
+        const navigationIcon = document.getElementById("navigationIcon");
+
+        function openMenu() {
+            navigationMenu.style.opacity="1";
+            navigationMenu.style.width="57%";
+            navigationMenu.style.pointerEvents="all";
+            setTimeout(() => {
+                chrestMenu.style.opacity="1";
+            }, 40);
+            navigationIcon.style.color="white";
+        }
+        function closeMenu() {
+            setTimeout(() => {
+                navigationMenu.style.width = "0";
+                navigationMenu.style.pointerEvents = "none"; 
+                setTimeout(() => {
+                    chrestMenu.style.opacity="0";
+                    navigationIcon.style.color="black";
+                }, 41);
+                setTimeout(() => {
+                    navigationMenu.style.opacity = "0";
+                }, 301);
+            }, 1); 
+        }
+    </script>
+    <script> // Image changing
+    document.addEventListener("DOMContentLoaded", function() {
+        var nextButton = document.getElementById("next");
+        var previousButton = document.getElementById("previous");
+        var images = document.querySelectorAll(".sculptImg");
+        var currentIndex = 1;
+
+        nextButton.addEventListener("click", function() {
+            changeImage(1, 'left');
+        });
+
+        previousButton.addEventListener("click", function() {
+            changeImage(-1, 'right');
+        });
+
+        function changeImage(direction, transformOrigin) {
+            // Set transform-origin for all images
+            images.forEach(function(image) {
+                image.style.transformOrigin = transformOrigin;
+            });
+
+            images[currentIndex].style.width = "0px"; // Hide current image
+            images[currentIndex].style.height = "0px";
+            images[currentIndex].style.opacity = "0";
+            images[currentIndex].style.transform = "scaleX(0)"; // Hide current image
+
+            currentIndex += direction; // Update index
+
+            // Loop back to the beginning if at the end
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) { // Loop to the end if at the beginning
+                currentIndex = images.length - 1;
+            }
+
+            images[currentIndex].style.width = "320px"; // 
+            images[currentIndex].style.height = "190px";
+            images[currentIndex].style.opacity = "1";
+            images[currentIndex].style.transform = "scaleX(1)"; // Show new image
+        }
+    });
+    </script>
+    <script> // Img carusel
+        const images = document.querySelectorAll('.sculptImg');
+        let currentImageIndex = 0;
+        let intervalId;
+
+        function showImage(index) {
+            images.forEach((img, idx) => {
+                if (idx === index) {
+                    img.style.opacity = "1";
+                    img.style.transform="scaleX(1)";
+                    img.style.height = "190px";
+                    img.style.width = "320px";
+                } else {
+                    img.style.opacity = "0";
+                    img.style.height = "0px";
+                    img.style.transform="scaleX(0)"
+                    img.style.height = "0px";
+                }
+            });
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        function startImageRotation() {
+            intervalId = setInterval(nextImage, 3000);
+        }
+
+        function stopImageRotation() {
+            clearInterval(intervalId);
+        }
+
+        document.getElementById('next').addEventListener('click', nextImage);
+        document.getElementById('previous').addEventListener('click', previousImage);
+
+        const audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.addEventListener('play', startImageRotation);
+        audioPlayer.addEventListener('pause', stopImageRotation);
+    </script>
+    <script> //Open brief info
+        function openSculptures() {
+            window.location.href = '../index.html';
+        }
+        function openContributors() {
+            window.location.href = '../../Contributions/commonPhone.html';
+        }
+        function openAbout() {
+            window.location.href = '../../About/commonPhone.html';
+        }
+        function opemMaap() {
+            window.location.href = '../../Map/index.html';
+        }
+    </script>
+
+</body>
+</html>

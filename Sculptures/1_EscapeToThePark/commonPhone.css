@@ -175,27 +175,27 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 220px;
+    height: 265px;
     /* margin: 0; */
 }
 .sculptImg {
     width: 320px;
-    height: 190px;
+    height: 245px;
     border-radius: 5px;
     position: absolute;
     transition: transform 0.3s ease, opacity 0.3s ease, width 0.2s ease, height 0.2s ease;
 }
 .img1 {
-    background: url(img/BIOSCOOP1.jpeg) center center/cover;
+    background: url(img/1.jpg) center center/cover;
     transform: scaleX(1);
     width: 0;
 }
 .img2 {
-    background: url(img/BIOSCOOP2.jpeg) center center/cover;
+    background: url(img/2.jpg) center center/cover;
     width: 0px;
 }
 .img3 {
-    background: url(img/BIOSCOOP3.jpeg) center center/cover;
+    background: url(img/3.jpg) center center/cover;
     width: 0px;
 }
 .imageCarusel {
