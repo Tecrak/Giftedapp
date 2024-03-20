@@ -83,12 +83,9 @@ body, html {
     color: white;
     text-shadow: 0px 1px 0px black;
 }
-.navigationMenu > a {
+.navigationMenu > li {
     position: relative;
     border-bottom:1.5px rgb(216, 216, 216) solid;
-    text-decoration: none;
-    color:#00068C;
-    text-shadow: 0;
     top:48px;
     /* margin-top: 10px; */
     /* background: rgba(232, 232, 232, 0.929); */
@@ -99,16 +96,16 @@ body, html {
     height: 40px;
     padding-left: 12px;
 }
-.navigationMenu > a:nth-child(2) {
+.navigationMenu > li:nth-child(2) {
     background: linear-gradient(45deg,#FFC3E3 80%, #ff0088a8 20%);
 }
-.navigationMenu > a:nth-child(3) {
+.navigationMenu > li:nth-child(3) {
     background: linear-gradient(135deg, #EDAEFA  80%,#c700ef9f 20%);
 }
-.navigationMenu > a:nth-child(4) {
+.navigationMenu > li:nth-child(4) {
     background: linear-gradient(45deg,#FFF7B9 80%, #ffe100bd 20%);
 }
-.navigationMenu > a:nth-child(5) {
+.navigationMenu > li:nth-child(5) {
     background: linear-gradient(135deg,#BBFDEF 80%, #00F6BF 20%);
 }
 .navigationIcon > li {
@@ -135,7 +132,7 @@ body, html {
     align-items: center;
     justify-content: center;
     font-size: 25px;
-    padding-top: 10px;
+    padding-top: 3px;
     color:white;
     text-shadow: 1px 1px 3px black;
     font-weight: bold;
