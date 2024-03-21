@@ -79,6 +79,12 @@ body, html {
     transition: opacity 0.15s ease;
     z-index: 3;
 }
+.closeMenu > i {
+    font-size: 25px;
+    position: relative;
+    top:5px;
+    right: 5px;
+}
 .navigationIcon {
     color: white;
     text-shadow: 0px 1px 0px black;
@@ -195,7 +201,7 @@ body, html {
     width: 100%;
     z-index: 1;
     /* transition: height 0.01s ease-in-out, top 0.01s ease-in-out, background 0.5s ease; */
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 .sculptureList > * {
     position: relative;

@@ -79,6 +79,12 @@ body, html {
     transition: opacity 0.15s ease;
     z-index: 3;
 }
+.closeMenu > i {
+    font-size: 25px;
+    position: relative;
+    top:5px;
+    right: 5px;
+}
 .navigationIcon {
     color: white;
     text-shadow: 0px 0.999px 0px black;
@@ -191,11 +197,11 @@ body, html {
     width: 0;
 }
 .img2 {
-    background: url(img/2.jpeg) center center/cover;
+    background: url(img/2.jpg) center center/cover;
     width: 0px;
 }
 .img3 {
-    background: url(img/3.jpeg) center center/cover;
+    background: url(img/3.jpg) center center/cover;
     width: 0px;
 }
 .imageCarusel {
