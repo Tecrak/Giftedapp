@@ -25,16 +25,24 @@
             </div>
             <div class="contentBlock">
                 <div class="map" id="map">
+                    <img src="map.jpg" type="img/jpg">
+                    <div id="icon1" class="iconMap icon1" onclick="openNine()"></div>
+                    <div id="icon2" class="iconMap icon2" onclick="openTen()"></div>
+                    <div id="icon3" class="iconMap icon3" onclick="openEleven()"></div>
+                    <div id="icon4" class="iconMap icon4" onclick="openTry()"></div>
+                    <div id="icon5" class="iconMap icon5" onclick="openPja()"></div>
+                    <div id="icon6" class="iconMap icon6" onclick="openCho()"></div>
+                    <div id="icon7" class="iconMap icon7" onclick="openTwelve()"></div>
+                    <div id="icon8" class="iconMap icon8" onclick="openShist()"></div>
+                    <div id="icon9" class="iconMap icon9" onclick="openEight()"></div>
+                    <div id="icon10" class="iconMap icon10" onclick="openFive()"></div>
+                    <div id="icon11" class="iconMap icon11" onclick="openSix()"></div>
+                    <div id="icon12" class="iconMap icon12" onclick="openSeven()"></div>
+                    <div id="icon13" class="iconMap icon13" onclick="openFour()"></div>
+                    <div id="icon14" class="iconMap icon14" onclick="openThree()"></div>
+                    <div id="icon15" class="iconMap icon15" onclick="openTwo()"></div>
+                    <div id="icon16" class="iconMap icon16" onclick="openOne()"></div>
                     <div class="realMap" id="realMap">
-                        <div class="iconsBlock" id="iconsBlock">
-                            <div class="mapIcon mapIcon1" id="mapIcon1" onclick="zoomingMap()"> <!--zoomingMap()-->
-                                <div class="mapIconN" id="mapIconN">
-                                    <div class="mapIconT" id="mapIconT" style="background: url(../img/TarasIcon.jpg) center center/cover;" onclick="openOne()">
-                                    </div>
-                                    <div class="mapIconI" id="mapIconI" style="background: url(../img/IvanFranko.jpg) center center/cover;"></div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="pointChat" id="pointChat">
@@ -107,10 +115,24 @@
     <script> // Drag menu
         const sculptureList = document.getElementById('sculptureList');
         const map = document.getElementById('map');
-        const iconsBlock= document.getElementById('iconsBlock');
-        const mapIcon1 =document.getElementById('mapIcon1');
         const expandButton = document.getElementById('gripper');
         const navigationBlock = document.getElementById('navigationBlock');
+        const icon1 = document.getElementById("icon1");
+        const icon2 = document.getElementById("icon2");
+        const icon3 = document.getElementById("icon3");
+        const icon4 = document.getElementById("icon4");
+        const icon5 = document.getElementById("icon5");
+        const icon6 = document.getElementById("icon6");
+        const icon7 = document.getElementById("icon7");
+        const icon8 = document.getElementById("icon8");
+        const icon9 = document.getElementById("icon9");
+        const icon10 = document.getElementById("icon10");
+        const icon11 = document.getElementById("icon11");
+        const icon12 = document.getElementById("icon12");
+        const icon13 = document.getElementById("icon13");
+        const icon14 = document.getElementById("icon14");
+        const icon15 = document.getElementById("icon15");
+        const icon16 = document.getElementById("icon16");
         let startY;
         let initialMapHeight;
         let initialSculptureListHeight;
@@ -161,9 +183,6 @@
             sculptureList.style.height = `calc(${newSculptureListHeight}%)`;
             map.style.transition = 'height 0.01s ease-in-out, background 0.5s ease';
             sculptureList.style.transition = 'height 0.01s ease-in-out, background 0.1s ease';
-
-            iconsBlock.style.opacity = '0';
-            iconsBlock.style.pointerEvents = 'none';
         }
 
         function stopDrag(e) {
@@ -201,10 +220,22 @@
                 sculptureList.style.height = 'calc(50%)';
                 map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
                 sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.1s ease';
-                iconsBlock.style.opacity = '1';
-                iconsBlock.style.pointerEvents = 'all';
-                mapIcon1.style.left = '106px';
-                mapIcon1.style.top = '27px';
+                icon1.style.top="48px";
+                icon2.style.top="80px";
+                icon3.style.top="172px";
+                icon4.style.top="223px";
+                icon5.style.top="253px";
+                icon6.style.top="223px";
+                icon7.style.top="252px";
+                icon8.style.top="205px";
+                icon9.style.top="55px";
+                icon10.style.top="5px";
+                icon11.style.top="5px";
+                icon12.style.top="5px";
+                icon13.style.top="54px";
+                icon14.style.top="110px";
+                icon15.style.top="182px";
+                icon16.style.bottom="2px";
             }
         }, 10);
 
@@ -215,12 +246,27 @@
                 sculptureList.style.height = 'calc(50%)';
                 map.style.transition = 'height 0.5s ease-in-out, background 0.5s ease';
                 sculptureList.style.transition = 'height 0.5s ease-in-out, background 0.1s ease';
-                iconsBlock.style.opacity = '1';
-                iconsBlock.style.pointerEvents = 'all';
-                mapIcon1.style.left = '104px';
-                mapIcon1.style.top = '144px';
+                icon1.style.top="108px";
+                icon2.style.top="154px";
+                icon3.style.top="324px";
+                icon4.style.top="418px";
+                icon5.style.top="465px";
+                icon6.style.top="418px";
+                icon7.style.top="465px";
+                icon8.style.top="385px";
+                icon9.style.top="115px";
+                icon10.style.top="18px";
+                icon11.style.top="18px";
+                icon12.style.top="18px";
+                icon13.style.top="108px";
+                icon14.style.top="210px";
+                icon15.style.top="342px";
+                icon16.style.bottom="11px";
             }
         }, 10);
+    </script>
+    <script> // Not funny icons
+
     </script>
     <script> //Open brief info
         function openOne() {
@@ -284,8 +330,7 @@
             window.location.href = '../Map/index.html';
         }
     </script>
-    </script>
-    <script> // Spliting
+    <!-- <script> // Spliting
         document.addEventListener('DOMContentLoaded', function() {
             const map = document.getElementById('map');
             const mapIcon = document.getElementById('mapIcon1');
@@ -339,8 +384,8 @@
                 currentScale = scale;
             });
         });
-    </script>
-    <script> // Zooming
+    </script> -->
+    <!-- <script> // Zooming
         const realMap = document.querySelector('.map');
 
         // Map zooming for mouse
@@ -441,6 +486,6 @@
 
             this.style.transformOrigin = `${newX}% ${newY}%`;
         }
-    </script>
+    </script> -->
 </body>
 </html>

@@ -79,12 +79,6 @@ body, html {
     transition: opacity 0.15s ease;
     z-index: 3;
 }
-.closeMenu > i {
-    font-size: 25px;
-    position: relative;
-    top:5px;
-    right: 5px;
-}
 .navigationIcon {
     color: white;
     text-shadow: 0px 1px 0px black;
@@ -159,13 +153,20 @@ body, html {
     /* top:5px; */
 }
 .map {
+    position: relative;
+    z-index: -1;
     overflow: hidden;
     width: 100%;
-    height: 50%;
-    background: url(../img/map.jpg) center center;
-    background-size:500px;
+    height: 60%;
+    background-size:300px;
     transform: scale(1);
     z-index: 0;
+}
+.map > img {
+    width: 100%;
+    position: relative;
+    z-index:-1;
+    height: 100%;
 }
 .realMap {
     width: 100%;
@@ -270,7 +271,7 @@ body, html {
     color: #00068C;
     width: 100%;
     z-index: 1;
-    height: 50%; 
+    height: 40%; 
     /* transition: height 0.01s ease-in-out, top 0.01s ease-in-out, background 0.5s ease; */
     overflow: scroll    ;
 }
@@ -469,3 +470,74 @@ body, html {
     font-size: 18px;
 }
 /* ---------------------- */
+/* ICONS */
+.iconMap {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+}
+.icon1 {
+    top: 48px;
+    left: 13px;
+}
+.icon2 {
+    top: 80px;
+    left: 14px;
+}
+.icon3 {
+    top: 172px;
+    left: 13px;
+}
+.icon4 {
+    top: 223px;
+    left: 42px; 
+}
+.icon5 {
+    top: 253px;
+    left: 42px; 
+}
+.icon6 {
+    top: 223px;
+    left: 82px; 
+}
+.icon7 {
+    top: 252px;
+    left: 82px; 
+}
+.icon8 {
+    top: 205px;
+    left: 173px; 
+}
+.icon9 {
+    top: 55px;
+    left: 121px; 
+}
+.icon10 {
+    top: 5px;
+    right:135px; 
+}
+.icon11 {
+    top: 5px;
+    right:96px; 
+}
+.icon12 {
+    top: 5px;
+    right:55px; 
+}
+.icon13 {
+    top: 54px;
+    right:78px; 
+}
+.icon14 {
+    top: 110px;
+    right:64px; 
+}
+.icon15 {
+    top: 182px;
+    right:56px; 
+}
+.icon16 {
+    bottom:2px;
+    right:11px; 
+}
