@@ -51,7 +51,7 @@ body, html {
 .navigationMenu {
     position: absolute;
     z-index: 3;
-    background: url(img/navigateBack.png);
+    background: white;
     color: #00068C;
     box-shadow: 1px 0px 2px 0px black;
     opacity: 0;
@@ -70,6 +70,78 @@ body, html {
     top: 0;
     width: 100%;
     height: 100%;
+}
+.designing {
+    position: absolute;
+    z-index: -2;
+}
+.design1 {
+    width: 150px;
+    height: 150px;
+    background: url(../img/yellow_snake.png) center center/cover;
+    bottom: -50px;
+    left: -30px;
+    animation: rolling 8s infinite steps(360);
+}
+@keyframes rolling {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.design2 {
+    width: 150px;
+    height: 150px;
+    background: url(../img/pink_star.png) center center/cover;
+    top: -50px;
+    right: -60px;
+    transform: rotate(145deg);
+    animation: rolling 5s infinite steps(360);
+}
+.design3 {
+    width: 150px;
+    height: 150px;
+    background: url(../img/lazure_owl-removebg-preview.png) center center/cover;
+    top: 200px;
+    left: -60px;
+    transform: rotate(145deg);
+    animation: skewing 8s infinite steps(360) alternate;
+}
+@keyframes skewing {
+    0% {
+        transform: skewY(-20deg);
+        transform: skewX(15deg);
+    }
+    50% {
+        transform: skewY(20deg);
+        transform: skewX(-15deg);
+    }
+    75% {
+        transform: skewY(-20deg);
+        transform: skewX(15deg);
+    }
+    100% {
+        transform: skewY(20deg);
+        transform: skewX(-15deg);
+    }
+}
+.design4 {
+    width: 100px;
+    height: 100px;
+    background: url(../img/purple_owls.png) center center/cover;
+    top: 370px;
+    left: 60px;
+    animation: explose 3s infinite alternate steps(360);
+}
+@keyframes explose {
+    from {
+        transform: scale(70%);
+    }
+    tp {
+        transform: scale(110%);
+    }
 }
 .closeMenu {
     color:#00068C;
